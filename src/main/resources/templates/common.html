@@ -5,6 +5,21 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'안녕하세요, ' + ${data}" >안녕하세요. 손님</p>
+<h1>VOC 등록하기</h1>
+
+<p th:text="'안녕하세요, ' + ${data}" >안녕하세요. 관리자님</p>
+
+<form method="get" action="form-action.html">
+
+  <p>[책임]</p>
+  <label><input type="radio" name="type" value="fault_typeA">운송사</label>
+  <label><input type="radio" name="type" value="fault_typeB">고객사</label>
+
+  <p>[귀책 사유]</p>
+  <textarea name="opinion" cols="30" rows="5" placeholder="귀책 사유를 적어주세요."></textarea><br>
+
+  <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
+</form>
+
 </body>
 </html>
