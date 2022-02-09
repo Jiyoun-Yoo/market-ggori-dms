@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>문의하기</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div id="auth">
+  <form id="loginForm" action='login' method='post'>
+    <div style="text-align: center">
+      <p style="margin-top: 30px; margin-bottom: 1rem; font-size: 28px; font-weight: bold;">
+        대한민국 NO.1 <br>
+        Cold Chain Platform</p>
+
+      <p>팀 프레시 배송관리 시스템 로그인</p>
+
+      <div>
+        <input id="inputID" type="email" class="form-control" name='email' placeholder="ID">
+        <input id="inputPassword" type="password" class="form-control" name='password' placeholder="Password">
+        <button class="btn btn-primary">로그인</button>
+      </div>
+
+      <br>
+
+      <div>
+        <a href="#">이메일 계정 찾기</a>
+        <span>  |  </span>
+        <a href="#">비밀번호 재설정</a>
+        <span> | </span>
+        <a href="#">회원가입</a>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
