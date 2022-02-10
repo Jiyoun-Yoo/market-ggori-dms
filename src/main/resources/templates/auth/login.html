@@ -1,39 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <title>VOC 등록하기</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="~{layouts/layout}">
 
-<div id="auth">
-  <form id="loginForm" action='login' method='post'>
-    <div style="text-align: center">
-      <p style="margin-top: 30px; margin-bottom: 1rem; font-size: 28px; font-weight: bold;">
-        대한민국 NO.1 <br>
-        Cold Chain Platform</p>
+<!-- 사용자 CSS -->
+<th:block layout:fragment="css">
+  <style>
+  </style>
+</th:block>
 
-      <p>팀 프레시 배송관리 시스템 로그인</p>
+<!-- 사용자 Scipt -->
+<th:block layout:fragment="script">
+  <script>
+  </script>
+</th:block>
 
-      <div>
-        <input id="inputID" type="email" class="form-control" name='email' placeholder="ID">
-        <input id="inputPassword" type="password" class="form-control" name='password' placeholder="Password">
-        <button class="btn btn-primary">로그인</button>
+<div layout:fragment="content">
+  <h1>avcdefg</h1>
+  <div id="auth">
+    <form id="loginForm" th:action="@{/login}" method='post'>
+      <div style="text-align: center">
+        <p style="margin-top: 50px; margin-bottom: 3rem; font-size: 20px; font-weight: bold;">
+          팀 프레시 배송관리 시스템 로그인</p>
+
+        <div class="form-floating mb-3 w-50">
+          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating w-50">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+
+
+        <div class="w-50 .center">
+          <input id="inputID" type="id" class="form-control" name='usr_id' placeholder="ID">
+          <input id="inputPassword" type="password" class="form-control" name='usr_pwd' placeholder="Password">
+        </div>
+
+        <button type="button" class="btn btn-dark btn-lg">로그인</button>
+
+
+        <br>
+
+        <div>
+          <a href="#">이메일 계정 찾기</a>
+          <span>  |  </span>
+          <a href="#">비밀번호 재설정</a>
+          <span> | </span>
+          <a href="#">회원가입</a>
+
+        </div>
       </div>
-
-      <br>
-
-      <div>
-        <a href="#">이메일 계정 찾기</a>
-        <span>  |  </span>
-        <a href="#">비밀번호 재설정</a>
-        <span> | </span>
-        <a href="#">회원가입</a>
-
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
-
-</body>
 </html>
+
+

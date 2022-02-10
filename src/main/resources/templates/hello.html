@@ -4,7 +4,14 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorator="~{layouts/layout}">
 
-<th:block layout:fragment="css"> </th:block>
+<th:block layout:fragment="css">
+<style>
+  body {
+    color: white;
+    background-color: #37393E;
+  }
+</style>
+</th:block>
 
 <th:block layout:fragment="script">
   <script>
