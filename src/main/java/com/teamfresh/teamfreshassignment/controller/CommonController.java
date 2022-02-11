@@ -7,14 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class CommonController {
 
-  @GetMapping("hello")
-  public String hello( ) {
-    return "hello";
-  }
-
-  @GetMapping("common")
-  public String common(Model model) {
+  @GetMapping("main")
+  public String main(Model model) {
     model.addAttribute("data", "team fresh!!");
-    return "common/common";
+    return "common/main";
   }
 }

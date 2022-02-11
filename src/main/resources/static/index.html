@@ -1,29 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="~{layouts/layout}">
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="~{layouts/layout}">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<head></head>
-
-<!-- index.html 고유 CSS 추가 -->
 <th:block layout:fragment="css">
   <style>
-    .titleDiv{
-      height: 100px;
-      width: 300px;
-      background-color: lightcoral;
-    }
   </style>
 </th:block>
 
-<!-- index.html 고유 스크립트 추가 -->
-<th:block layout:fragment="script"> </th:block>
+<th:block layout:fragment="script">
+  <script>
+  </script>
+</th:block>
 
 <div layout:fragment="content">
-  <div class="titleDiv">
-    Test 공간입니다
+  <div style="border: 1px solid red">
+    index.html 입니다.
   </div>
 </div>
-
 </html>

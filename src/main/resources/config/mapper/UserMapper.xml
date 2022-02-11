@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devil.dao.UserDao">
+
+  <resultMap type="user"        id="UserMap">
+    <id column="uno"		      	property="no" />
+    <result column="usr_id" 		  property="usr_id" />
+    <result column="name" 		  property="name" />
+    <result column="tel"        property="tel" />
+    <result column="hashpwd" 		    property="password" />
+    <result column="cdt" 		    property="createdDate" />
+    <result column="log_type" 	property="loginType" />
+    <result column="photo" 	  	property="photo" />
+    <result column="blocked"  	property="blocked" />
+    <result column="auth"   		property="auth" />
+    <result column="state" 	  	property="state" />
+  </resultMap>
+
+  <sql id="sql1">
+    select
+      u.uno,
+      u.name,
+      u.email,
+      u.pwd,
+      u.state,
+      u.photo,
+      u.blocked
+    from user u
+  </sql>
+
+  <insert id="insert" parameterType="string">
+    insert into user(usr_id, name, tel, hashpwd, rnt_vsdt)
+    values(#{usr_id}, #{name}, #{tel}, password(#{password}), now())
+  </insert>
+
+</mapper>

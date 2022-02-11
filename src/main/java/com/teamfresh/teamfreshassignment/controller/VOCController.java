@@ -10,12 +10,12 @@ public class VOCController {
   @GetMapping("createVOC")
   public String createVOC(Model model) {
     model.addAttribute("data", "Team Fresh");
-    return "createVOC";
+    return "voc/createVOC";
   }
 
   @GetMapping("readVOC")
   public String readVOC(Model model) {
     model.addAttribute("data", "Team Fresh");
-    return "readVOC";
+    return "voc/readVOC";
   }
 }
