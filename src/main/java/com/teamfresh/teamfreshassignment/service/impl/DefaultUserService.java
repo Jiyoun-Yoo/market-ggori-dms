@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DefaultUserService implements UserService {
-//  UserDao userDao;
-//
-//  public DefaultUserService(UserDao userDao) {
-//    this.userDao = userDao;
-//  }
+  UserDao userDao;
+
+  public DefaultUserService(UserDao userDao) {
+    this.userDao = userDao;
+  }
 
   @Override
   public List<User> list(String keyword) throws Exception {

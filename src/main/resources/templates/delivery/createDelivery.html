@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html
+<html lang="en"
     xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorator="~{layouts/layout}">
@@ -15,8 +15,24 @@
 </th:block>
 
 <div layout:fragment="content">
-  <div>
-    createDevlivery.html 입니다.
+
+  <div id="delivery">
+    <form id="createDeliveryForm" th:action="@{/delivery/new}" method='post'>
+      <div style="text-align: center; padding: 20px 0px;">
+        <p style="font-size: 20px; font-weight: bold;">
+          배송 등록</p>
+
+        <div class="w-50 center">
+          <input id="detail" type="text" class="form-control" name='usr_id' placeholder="ID">
+        </div>
+
+        <div style="margin-top:10px; margin-bottom: 10px;">
+          <button type="submit" class="btn btn-primary btn-lg">등록</button>
+          <a href="list" class="btn btn-secondary btn-lg">취소</a>
+        </div>
+
+      </div>
+    </form>
   </div>
 </div>
 </html>

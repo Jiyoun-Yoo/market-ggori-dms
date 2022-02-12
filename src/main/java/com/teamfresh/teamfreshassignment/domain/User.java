@@ -10,13 +10,29 @@ public class User {
   private String tel;
   private String usr_pwd;
   private Date createdDate;
-  private Date recentVisitedDate;
-  private String photo;
+  private Date recentVisitDate;
   private int penalty_cnt; //패널티 횟수
   private String admin_yn; //관리자 여부
   private String use_yn; //사용 여부
   private String block_yn; //차단 여부
   private String admin_comment;
+
+  public User(int no, String usr_id, String email, String name, String tel, String usr_pwd,
+      int penalty_cnt, String admin_yn, String use_yn, String block_yn, String admin_comment) {
+    this.no = no;
+    this.usr_id = usr_id;
+    this.email = email;
+    this.name = name;
+    this.tel = tel;
+    this.usr_pwd = usr_pwd;
+//    this.createdDate = createdDate;
+//    this.recentVisitDate = recentVisitedDate;
+    this.penalty_cnt = penalty_cnt;
+    this.admin_yn = admin_yn;
+    this.use_yn = use_yn;
+    this.block_yn = block_yn;
+    this.admin_comment = admin_comment;
+  }
 
   public int getNo() {
     return no;
@@ -81,21 +97,12 @@ public class User {
     return this;
   }
 
-  public Date getRecentVisitedDate() {
-    return recentVisitedDate;
+  public Date getRecentVisitDate() {
+    return recentVisitDate;
   }
 
-  public User setRecentVisitedDate(Date recentVisitedDate) {
-    this.recentVisitedDate = recentVisitedDate;
-    return this;
-  }
-
-  public String getPhoto() {
-    return photo;
-  }
-
-  public User setPhoto(String photo) {
-    this.photo = photo;
+  public User setRecentVisitDate(Date recentVisitDate) {
+    this.recentVisitDate = recentVisitDate;
     return this;
   }
 
