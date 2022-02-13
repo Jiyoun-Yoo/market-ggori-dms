@@ -43,7 +43,7 @@ public class UserController {
       e.printStackTrace();
     }
 
-    return new RedirectView("/common/login");
+    return new RedirectView("/login");
   }
 
   @GetMapping("login")
@@ -54,7 +54,7 @@ public class UserController {
     if (user != null) {
       model.addAttribute("msg", "이미 로그인 된 상태입니다.");
       model.addAttribute("login_id", "(로그인 ID : " + user.getUsr_id() + ")");
-      return "common/main";
+      return "user/main";
     }
     return "user/login";
   }
@@ -64,20 +64,20 @@ public class UserController {
       HttpServletResponse response, HttpSession session) throws Exception {
     LOGGER.info("#####  " + usr_id + "로그인 시도");
 
-    //쿠키에 아이디 저장
-    Cookie id_cookie = new Cookie("id_cookie", usr_id);
-
-    if (saveId != null) {
-      id_cookie.setMaxAge(60 * 60 * 24 * 7);
-      LOGGER.info("##### " + usr_id + "쿠키에 아이디 저장");
-    } else {
-      id_cookie.setMaxAge(0);
-    }
-    response.addCookie(id_cookie);
+//    //쿠키에 아이디 저장
+//    Cookie id_cookie = new Cookie("id_cookie", usr_id);
+//
+//    if (saveId != null) {
+//      id_cookie.setMaxAge(60 * 60 * 24 * 7);
+//      LOGGER.info("##### " + usr_id + "쿠키에 아이디 저장");
+//    } else {
+//      id_cookie.setMaxAge(0);
+//    }
+//    response.addCookie(id_cookie);
 
     //mock user
     User user = new User(1, "jiyoun-yoo", "jiyounyoo@test.com", "jiyounyoo",
-        "010-1234-1234", "1234",0, "y", "n", "n", "");
+        "010-1234-1234", "1234",0, "N", "Y", "n", "");
 
 //    User user = null;
 //    try {
@@ -90,23 +90,24 @@ public class UserController {
     if(user == null) {
       session.setAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다. <br> 입력하신 정보가 정확한지 확인하시길 바랍니다.");
       return new RedirectView("/user/login-error");
-    } else if(user.getBlock_yn().equalsIgnoreCase("y")) {
-      session.setAttribute("msg", "접근이 차단된 계정으로 로그인하셨습니다.");
-      return new RedirectView("/user/login-error");
-    } else if (user.getUse_yn().equalsIgnoreCase("n")) {
-      session.setAttribute("msg", "사용이 중지된 계정으로 로그인하셨습니다.");
-      return new RedirectView("/user/login-error");
+//    } else if(user.getBlock_yn().equalsIgnoreCase("y")) {
+//      session.setAttribute("msg", "접근이 차단된 계정으로 로그인하셨습니다.");
+//      return new RedirectView("/user/login-error");
+//    } else if (user.getUse_yn().equalsIgnoreCase("n")) {
+//      session.setAttribute("msg", "사용이 중지된 계정으로 로그인하셨습니다.");
+//      return new RedirectView("/user/login-error");
     }
 
+    session.setAttribute("loginUser", user);
     session.setAttribute("msg", usr_id + " 로그인 성공");
 
     if (user.getAdmin_yn().equalsIgnoreCase("y")) {
       LOGGER.info("#####  " + usr_id + "관리자 usr_id =" + usr_id +  " 로그인 완료");
-      return new RedirectView("/admin/main");
+//      return new RedirectView("/admin/main");
     }
 
     LOGGER.info("#####  " + usr_id + "일반 회원 usr_id =" + usr_id +  " 로그인 완료");
-    return new RedirectView("/common/main");
+    return new RedirectView("/main");
   }
 
   @GetMapping("login-error")
@@ -114,6 +115,11 @@ public class UserController {
     LOGGER.info("#####  " + session.getAttribute("msg"));
     model.addAttribute("msg", session.getAttribute("msg"));
     return "user/loginError";
+  }
+
+  @GetMapping("main")
+  public String main() {
+    return "user/main";
   }
 
 

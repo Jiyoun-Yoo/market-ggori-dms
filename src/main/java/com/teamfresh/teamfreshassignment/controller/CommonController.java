@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("common")
 public class CommonController {
 
   @GetMapping("main")
   public RedirectView main(Model model, HttpSession session) {
 
-    User user = (User) session.getAttribute("login_user");
+    User user = (User) session.getAttribute("loginUser");
 
     if(user == null) {
       return new RedirectView("/user/login");
@@ -25,7 +24,7 @@ public class CommonController {
       return new RedirectView("/admin/main");
 //      return "admin/main";
     }
-    return new RedirectView("/common/main");
+    return new RedirectView("/user/main");
 
 //    return "common/main";
   }
@@ -45,6 +44,6 @@ public class CommonController {
   public RedirectView ask(String content, String contactWay, String contactInfo, Model model) {
 
 
-    return new RedirectView("/common/main");
+    return new RedirectView("/main");
   }
 }
