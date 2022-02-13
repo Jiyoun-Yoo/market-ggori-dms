@@ -1,4 +1,4 @@
-package com.teamfresh.teamfreshassignment;
+package com.teamfresh.teamfreshassignment.config;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.context.annotation.Bean;

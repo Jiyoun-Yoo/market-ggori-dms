@@ -19,11 +19,6 @@
       var inputTel = document.querySelector("#inputTel");
       var inputName = document.querySelector("#inputName");
 
-      if (inputPassword.value != passwordConfirm.value) {
-        alert("비밀번호가 일치하지 않습니다.");
-        return false;
-      }
-
       if (inputID.value.length < 1 ||
           inputPassword.value.length < 1 ||
           inputName.value.length < 1 ||
@@ -41,7 +36,7 @@
     <form id="joinForm" th:action="@{join}" method='post'>
       <div style="text-align: center; padding: 50px 0px;">
         <p style="font-size: 20px; font-weight: bold;">
-          팀 프레시 배송관리 시스템 회원가입</p>
+          팀 프레시 배송관리 시스템 패널티 생성</p>
 
         <div class="w-50 center" style="font-size: 12px;">
 

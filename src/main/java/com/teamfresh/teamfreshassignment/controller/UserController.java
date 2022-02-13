@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -49,6 +50,7 @@ public class UserController {
   public String login(Model model, HttpSession session) {
 
     User user = (User) session.getAttribute("login_user");
+
     if (user != null) {
       model.addAttribute("msg", "이미 로그인 된 상태입니다.");
       model.addAttribute("login_id", "(로그인 ID : " + user.getUsr_id() + ")");
@@ -58,7 +60,7 @@ public class UserController {
   }
 
   @PostMapping("login")
-  public RedirectView login(String usr_id, String usr_pwd, String saveId,
+  public RedirectView login(@RequestParam String usr_id, @RequestParam String usr_pwd, String saveId,
       HttpServletResponse response, HttpSession session) throws Exception {
     LOGGER.info("#####  " + usr_id + "로그인 시도");
 

@@ -8,21 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("voc")
-public class VOCController {
+@RequestMapping("penalty")
+public class PenaltyController {
 
   @GetMapping("new")
-  public String createVOC() {
-    return "voc/createVOC";
+  public String main(Model model) {
+    return "penalty/new";
   }
 
   @PostMapping("new")
-  public RedirectView createVOC(String content, Model model) {
+  public RedirectView main(String departure, Model model) {
     return new RedirectView("/");
-  }
-
-  @GetMapping("detail")
-  public String readVOC() {
-    return "voc/readVOC";
   }
 }

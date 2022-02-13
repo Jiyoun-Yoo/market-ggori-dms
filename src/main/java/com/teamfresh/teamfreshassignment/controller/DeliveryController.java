@@ -1,6 +1,8 @@
 package com.teamfresh.teamfreshassignment.controller;
 
+import com.teamfresh.teamfreshassignment.domain.Delivery;
 import com.teamfresh.teamfreshassignment.service.UserService;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +23,7 @@ public class DeliveryController {
   }
 
   @PostMapping("new")
-  public RedirectView createDevlivery(Model modeal) {
+  public RedirectView createDevlivery(Delivery delivery, HttpSession session, Model model) {
 //    return "delivery/readDelivery";
     return new RedirectView("/delivery/detail");
   }
