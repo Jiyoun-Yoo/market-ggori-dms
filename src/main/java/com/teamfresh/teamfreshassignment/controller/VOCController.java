@@ -25,4 +25,10 @@ public class VOCController {
   public String readVOC() {
     return "voc/readVOC";
   }
+
+
+  @GetMapping("list")
+  public String penaltyList(Model model) {
+    return "voc/VOCList";
+  }
 }

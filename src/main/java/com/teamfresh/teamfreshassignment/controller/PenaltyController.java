@@ -12,12 +12,22 @@ import org.springframework.web.servlet.view.RedirectView;
 public class PenaltyController {
 
   @GetMapping("new")
-  public String main(Model model) {
-    return "penalty/new";
+  public String createPenalty(Model model) {
+    return "penalty/createPenalty";
   }
 
   @PostMapping("new")
-  public RedirectView main(String departure, Model model) {
+  public RedirectView createPenalty(String departure, Model model) {
     return new RedirectView("/");
+  }
+
+  @GetMapping("detail")
+  public String detail(Model model) {
+    return "penalty/readPenalty";
+  }
+
+  @GetMapping("list")
+  public String list(Model model) {
+    return "penalty/penaltyList";
   }
 }

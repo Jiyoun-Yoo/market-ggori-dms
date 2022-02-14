@@ -3,44 +3,44 @@ package com.teamfresh.teamfreshassignment.domain;
 import java.util.Date;
 
 public class User {
-  private int no;
+  private int usr_no;
+  private String svc_id;
   private String usr_id;
   private String email;
   private String name;
   private String tel;
   private String usr_pwd;
-  private Date createdDate;
+  private Date createdDate; //가입일
   private Date recentVisitDate;
   private int penalty_cnt; //패널티 횟수
   private String admin_yn; //관리자 여부
   private String use_yn; //사용 여부
   private String block_yn; //차단 여부
-  private String admin_comment;
+  private String admin_memo; //관리자 메모
 
-  public User(int no, String usr_id, String email, String name, String tel, String usr_pwd,
-      int penalty_cnt, String admin_yn, String use_yn, String block_yn, String admin_comment) {
-    this.no = no;
-    this.usr_id = usr_id;
-    this.email = email;
+  public User(String name, String usr_id, String usr_pwd, String email,  String tel) {
     this.name = name;
-    this.tel = tel;
+    this.usr_id = usr_id;
     this.usr_pwd = usr_pwd;
-//    this.createdDate = createdDate;
-//    this.recentVisitDate = recentVisitedDate;
-    this.penalty_cnt = penalty_cnt;
-    this.admin_yn = admin_yn;
-    this.use_yn = use_yn;
-    this.block_yn = block_yn;
-    this.admin_comment = admin_comment;
+    this.email = email;
+    this.tel = tel;
   }
 
-  public int getNo() {
-    return no;
+  public int getUsr_no() {
+    return usr_no;
   }
 
-  public User setNo(int no) {
-    this.no = no;
+  public User setUsr_no(int usr_no) {
+    this.usr_no = usr_no;
     return this;
+  }
+
+  public String getSvc_id() {
+    return svc_id;
+  }
+
+  public void setSvc_id(String svc_id) {
+    this.svc_id = svc_id;
   }
 
   public String getUsr_id() {
@@ -142,12 +142,12 @@ public class User {
     return this;
   }
 
-  public String getAdmin_comment() {
-    return admin_comment;
+  public String getAdmin_memo() {
+    return admin_memo;
   }
 
-  public User setAdmin_comment(String admin_comment) {
-    this.admin_comment = admin_comment;
+  public User setAdmin_memo(String admin_memo) {
+    this.admin_memo = admin_memo;
     return this;
   }
 }

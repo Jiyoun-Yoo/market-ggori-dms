@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
@@ -35,7 +36,14 @@ public class UserController {
   }
 
   @PostMapping("join")
-  public RedirectView join(@ModelAttribute User user, Model model, HttpSession session) {
+  public RedirectView join(HttpServletRequest request, Model model, HttpSession session) {
+    String name = request.getParameter("name");
+    String usr_id = request.getParameter("usr_id");
+    String usr_pwd = request.getParameter("usr_pwd");
+    String email = request.getParameter("email");
+    String tel = request.getParameter("tel");
+
+    User user = new User(name, usr_id, usr_pwd, email, tel);
 
     try {
       userService.add(user);
@@ -60,9 +68,11 @@ public class UserController {
   }
 
   @PostMapping("login")
-  public RedirectView login(@RequestParam String usr_id, @RequestParam String usr_pwd, String saveId,
-      HttpServletResponse response, HttpSession session) throws Exception {
-    LOGGER.info("#####  " + usr_id + "로그인 시도");
+  public RedirectView login(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+    String usr_id = request.getParameter("usr_id");
+    String usr_pwd = request.getParameter("usr_pwd");
+
+      LOGGER.info("#####    " + usr_id + "로그인 시도");
 
 //    //쿠키에 아이디 저장
 //    Cookie id_cookie = new Cookie("id_cookie", usr_id);
@@ -76,10 +86,17 @@ public class UserController {
 //    response.addCookie(id_cookie);
 
     //mock user
-    User user = new User(1, "jiyoun-yoo", "jiyounyoo@test.com", "jiyounyoo",
-        "010-1234-1234", "1234",0, "N", "Y", "n", "");
+    User usr_admin = new User("jiyounyoo","jiyoun_admin" ,"1234", "jiyounyoo@test.com","010-1234-1234");
+    usr_admin.setAdmin_yn("Y");
+    User usr_general = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234");
+    usr_general.setAdmin_yn("N");
+    User usr_blocked = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234");
+    usr_blocked.setBlock_yn("Y");
+    User usr_notInUse = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234");
+    usr_notInUse.setUse_yn("N");
 
-//    User user = null;
+    User user = usr_admin;
+
 //    try {
 //      user = userService.get(usr_id, usr_pwd);
 //    } catch(Exception e) {
@@ -102,11 +119,12 @@ public class UserController {
     session.setAttribute("msg", usr_id + " 로그인 성공");
 
     if (user.getAdmin_yn().equalsIgnoreCase("y")) {
-      LOGGER.info("#####  " + usr_id + "관리자 usr_id =" + usr_id +  " 로그인 완료");
+      LOGGER.info("#####  " + usr_id + "관리자 usr_id =" + usr_id + " 로그인 완료");
 //      return new RedirectView("/admin/main");
+    } else {
+      LOGGER.info("#####  " + usr_id + "일반 회원 usr_id =" + usr_id +  " 로그인 완료");
     }
 
-    LOGGER.info("#####  " + usr_id + "일반 회원 usr_id =" + usr_id +  " 로그인 완료");
     return new RedirectView("/main");
   }
 

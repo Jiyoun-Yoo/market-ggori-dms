@@ -1,46 +1,45 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-  <title>VOC 등록하기</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-<h1>VOC 등록하기</h1>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="~{layouts/layout}">
 
-<p th:text="'안녕하세요, ' + ${data}" >안녕하세요. 관리자님</p>
+<th:block layout:fragment="css">
+  <style>
+  </style>
+</th:block>
 
-<form method="get" action="form-action.html">
+<th:block layout:fragment="script">
+  <script>
+  </script>
+</th:block>
 
-  <p>[책임]</p>
-  <label><input type="radio" id="fault_typeA" name="type" value="fault_typeA">운송사</label>
-  <label><input type="radio" id="fault_typeB" name="type" value="fault_typeB">고객사</label>
+<div layout:fragment="content">
+  <div>
 
-  <div id="penalty">
-    <p>[운송사 귀책 패널티]</p>
-    <textarea name="penalty" class="radio-value-detail" cols="30" rows="5" placeholder="패널티를 적어주세요."></textarea><br>
+    <form id="createForm" th:action="@{new}" method='post'>
+      <div style="text-align: center; padding: 50px 0px;">
+        <p style="font-size: 20px; font-weight: bold;">
+          팀 프레시 배송관리 시스템 VOC 등록</p>
+      <p>[책임]</p>
+      <label><input type="radio" id="fault_typeA" name="type" value="fault_typeA">운송사</label>
+      <label><input type="radio" id="fault_typeB" name="type" value="fault_typeB">고객사</label>
+
+      <div id="penalty">
+        <p>[운송사 귀책 패널티]</p>
+        <textarea name="penalty" class="radio-value-detail" cols="30" rows="5" placeholder="패널티를 적어주세요."></textarea><br>
+      </div>
+
+      <p>[귀책 사유]</p>
+      <textarea name="reason" cols="30" rows="5" placeholder="귀책 사유를 적어주세요."></textarea><br>
+
+      <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
+    </form>
   </div>
 
+</div>
+</html>
 
-  <p>[귀책 사유]</p>
-  <textarea name="reason" cols="30" rows="5" placeholder="귀책 사유를 적어주세요."></textarea><br>
-
-  <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
-</form>
 
 </body>
 </html>
-
-<script>
-  $(function (){
-    $('input[type="radio"][id="fault_typeA"]').on('click', function(){
-      var chkValue = $('input[type=radio][id="fault_typeA"]:checked').val();
-      alert(chkValue);
-      if(chkValue){
-        $('#penalty').css('display','none');
-      }else{
-        $('#penalty').css('display','block');
-      }
-    });
-  });
-
-</script>
