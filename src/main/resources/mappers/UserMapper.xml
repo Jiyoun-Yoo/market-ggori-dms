@@ -5,35 +5,62 @@
 
 <mapper namespace="com.devil.dao.UserDao">
 
-  <resultMap type="user"        id="UserMap">
-    <id column="uno"		      	property="no" />
-    <result column="usr_id" 		  property="usr_id" />
-    <result column="name" 		  property="name" />
-    <result column="tel"        property="tel" />
-    <result column="hashpwd" 		    property="password" />
-    <result column="cdt" 		    property="createdDate" />
-    <result column="log_type" 	property="loginType" />
-    <result column="photo" 	  	property="photo" />
-    <result column="blocked"  	property="blocked" />
-    <result column="auth"   		property="auth" />
-    <result column="state" 	  	property="state" />
+  <resultMap type="user"              id="UserMap">
+    <id column="usr_no"		            property="no" />
+    <result column="svc_id" 	      	property="svc_id" />
+    <result column="usr_id"      	  	property="usr_id" />
+    <result column="name" 		        property="name" />
+    <result column="email" 		        property="email" />
+    <result column="hashpwd" 	  	    property="usr_pwd" />
+    <result column="tel"              property="tel" />
+    <result column="rgs_dtm" 		      property="createdDate" />
+    <result column="last_vst_dtm" 		property="recentVisitDate" />
+    <result column="admin_yn"       	property="admin_yn" />
+    <result column="use_yn"  	        property="use_yn" />
+    <result column="block_yn"        	property="block_yn" />
+    <result column="penalty_cnt" 	  	property="penalty_cnt" />
+    <result column="admin_comment" 	 	property="admin_comment" />
   </resultMap>
 
   <sql id="sql1">
     select
-      u.uno,
+      u.usr_no,
+      u.svc_id,
+      u.usr_id,
       u.name,
       u.email,
-      u.pwd,
-      u.state,
-      u.photo,
-      u.blocked
+      u.hashpwd,
+      u.tel,
+      u.rgs_dtm,
+      u.last_vst_dtm,
+      u.admin_yn,
+      u.use_yn,
+      u.block_yn,
+      u.penalty_cnt
+      u.admin_comment
     from user u
   </sql>
 
-  <insert id="insert" parameterType="string">
-    insert into user(usr_id, name, tel, hashpwd, rnt_vsdt)
-    values(#{usr_id}, #{name}, #{tel}, password(#{password}), now())
+  <insert id="insertUser" parameterType="string">
+    insert into user(svc_id, usr_id, name, email, hashpwd, tel, rgs_dtm, last_vst_dtm)
+            values(#{svc_id}, #{usr_id}, #{name}, #{email}, password(#{usr_pwd}), #{tel}, now(), now())
   </insert>
+
+  <select id="findAllUsers" resultMap="UserMap" parameterType="map">
+    <include refid="sql1" />
+    <if test="keyword != null">
+      <bind name="pattern" value="'%' + keyword + '%'" />
+      where
+      email like #{pattern}
+      or nick like #{pattern}
+    </if>
+    order by uno usr_no desc
+  </select>
+
+  <select id="findAllAdmins" resultMap="UserMap" parameterType="map">
+    <include refid="sql1" />
+    order by usr_no desc
+  </select>
+
 
 </mapper>

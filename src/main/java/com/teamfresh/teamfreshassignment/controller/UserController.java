@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("user")
 public class UserController {
 
   private static final Logger LOGGER = LogManager.getLogger(UserController.class);
@@ -42,8 +41,11 @@ public class UserController {
     String usr_pwd = request.getParameter("usr_pwd");
     String email = request.getParameter("email");
     String tel = request.getParameter("tel");
+    String admin_yn = request.getParameter("admin_yn");
+    String use_yn = request.getParameter("use_yn");
+    String block_yn = request.getParameter("block_yn");
 
-    User user = new User(name, usr_id, usr_pwd, email, tel);
+    User user = new User(name, usr_id, usr_pwd, email, tel, admin_yn, use_yn, block_yn);
 
     try {
       userService.add(user);
@@ -86,23 +88,19 @@ public class UserController {
 //    response.addCookie(id_cookie);
 
     //mock user
-    User usr_admin = new User("jiyounyoo","jiyoun_admin" ,"1234", "jiyounyoo@test.com","010-1234-1234");
-    usr_admin.setAdmin_yn("Y");
-    User usr_general = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234");
-    usr_general.setAdmin_yn("N");
-    User usr_blocked = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234");
-    usr_blocked.setBlock_yn("Y");
-    User usr_notInUse = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234");
-    usr_notInUse.setUse_yn("N");
+    User usr_admin = new User("jiyounyoo","jiyoun_admin" ,"1234", "jiyounyoo@test.com","010-1234-1234", "y" , "y" ,"n");
+    User usr_general = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"n");
+    User usr_blocked = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
+    User usr_notInUse = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
 
-    User user = usr_admin;
+    User user = usr_general;
 
 //    try {
 //      user = userService.get(usr_id, usr_pwd);
 //    } catch(Exception e) {
 //      e.printStackTrace();
 //    }
-//    session.setAttribute("login_user", user);
+    session.setAttribute("login_user", user);
 
     if(user == null) {
       session.setAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다. <br> 입력하신 정보가 정확한지 확인하시길 바랍니다.");
@@ -135,10 +133,14 @@ public class UserController {
     return "user/loginError";
   }
 
-  @GetMapping("main")
+  @GetMapping("user/main")
   public String main() {
     return "user/main";
   }
 
+  @GetMapping("user/ask")
+  public String ask() {
+    return "user/ask";
+  }
 
 }

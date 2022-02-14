@@ -31,7 +31,8 @@ public class CommonController {
 
   @GetMapping("error")
   public String error(Model model, HttpSession session) {
-    model.addAttribute("msg", session.getAttribute("msg"));
+    model.addAttribute("msg", " 하헤히호후 ");
+//    model.addAttribute("msg", session.getAttribute("msg"));
     return "error";
   }
 
@@ -42,8 +43,6 @@ public class CommonController {
 
   @PostMapping("ask")
   public RedirectView ask(String content, String contactWay, String contactInfo, Model model) {
-
-
     return new RedirectView("/main");
   }
 }

@@ -18,12 +18,15 @@ public class User {
   private String block_yn; //차단 여부
   private String admin_memo; //관리자 메모
 
-  public User(String name, String usr_id, String usr_pwd, String email,  String tel) {
+  public User(String name, String usr_id, String usr_pwd, String email,  String tel, String admin_yn, String use_yn, String block_yn) {
     this.name = name;
     this.usr_id = usr_id;
     this.usr_pwd = usr_pwd;
     this.email = email;
     this.tel = tel;
+    this.admin_yn = admin_yn;
+    this.use_yn = use_yn;
+    this.block_yn = block_yn;
   }
 
   public int getUsr_no() {

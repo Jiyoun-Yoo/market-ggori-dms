@@ -26,7 +26,7 @@ public class AdminInterceptor implements HandlerInterceptor {
     User loginUser = (User) request.getSession().getAttribute("loginUser");
 
     if(loginUser == null || !loginUser.getAdmin_yn().equalsIgnoreCase("y")) {
-      request.getSession().setAttribute("msg", "관리자 권한이 없는 사용자입니다.");
+      (request.getSession()).setAttribute("msg", "관리자 권한이 없는 사용자입니다.");
       response.sendRedirect(request.getServletContext().getContextPath() + "/error");
       return false;
     }
