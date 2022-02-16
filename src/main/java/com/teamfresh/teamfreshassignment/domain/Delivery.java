@@ -7,18 +7,19 @@ public class Delivery {
   private User writer; //등록자
   private User admin_usr; //관리 담당자
   private User delivery_usr; //배송 담당자
+  private String deliver_check_yn; //배송 담당자 확인 여부
   private String departure; //출발지
   private String destination; //도착지
   private Date createdDate; //배송 요청 발생일
   private Date requestedDate; //배송 요청일
   private Date complatedcDate; //배송일
   private String state; //진행 상태(D: 예정, P: 진행중, Y: 완료, Z:취소, D: 보류)
-  private String memo;
+  private String detail;
   private String admin_memo;
 
   public Delivery(int no, User writer, User admin_usr,
       User delivery_usr, String departure, String destination, Date startDate, String state,
-      String memo, String admin_comment) {
+      String detail, String admin_comment) {
     this.delivery_no = no;
     this.writer = writer;
     this.admin_usr = admin_usr;
@@ -27,7 +28,7 @@ public class Delivery {
     this.destination = destination;
     this.complatedcDate = startDate;
     this.state = state;
-    this.memo = memo;
+    this.detail = detail;
     this.admin_memo = admin_comment;
   }
 
@@ -64,6 +65,15 @@ public class Delivery {
 
   public Delivery setDelivery_usr(User delivery_usr) {
     this.delivery_usr = delivery_usr;
+    return this;
+  }
+
+  public String getDeliver_check_yn() {
+    return deliver_check_yn;
+  }
+
+  public Delivery setDeliver_check_yn(String deliver_check_yn) {
+    this.deliver_check_yn = deliver_check_yn;
     return this;
   }
 
@@ -121,12 +131,12 @@ public class Delivery {
     return this;
   }
 
-  public String getMemo() {
-    return memo;
+  public String getDetail() {
+    return detail;
   }
 
-  public Delivery setMemo(String memo) {
-    this.memo = memo;
+  public Delivery setDetail(String detail) {
+    this.detail = detail;
     return this;
   }
 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.devil.dao.DeliveryDao">
+
+  <resultMap type="user"                    id="DeliveryMap">
+    <id column="delvry_no"		        property="delivery_no" />
+    <result column="usr_no" 	 	      property="usr_no" />
+    <result column="admin_usr_no" 	 	property="svc_id" />
+    <result column="driver_usr_no"   	property="usr_id" />
+    <result column="driver_check_yn"  property="driver_check_yn" />
+    <result column="from_where" 		  property="departure" />
+    <result column="to_where"         property="destination" />
+    <result column="rgs_dtm" 		      property="createdDate" />
+    <result column="reqsted_date" 	  property="requestedDate" />
+    <result column="compl_date" 	  	property="complatedcDate" />
+    <result column="state"  	        property="state" />
+    <result column="detail"        	  property="detail" />
+    <result column="admin_memo" 	 	  property="admin_memo" />
+
+  <association property="usr_no"            javaType="user">
+    <id column="usr_no"		            property="usr_no" />
+    <result column="usr_id"      	  	property="usr_id" />
+    <result column="name" 		        property="name" />
+    <result column="admin_yn"       	property="admin_yn" />
+  </association>
+
+  <association property="admin_usr_no"        javaType="user">
+    <id column="usr_no"		            property="usr_no" />
+    <result column="usr_id"      	  	property="usr_id" />
+    <result column="name" 		        property="name" />
+    <result column="admin_yn"       	property="admin_yn" />
+  </association>
+
+  <association property="driver_usr_no"       javaType="user">
+    <id column="usr_no"		            property="usr_no" />
+    <result column="usr_id"      	  	property="usr_id" />
+    <result column="name" 		        property="name" />
+    <result column="tel"              property="tel" />
+    <result column="use_yn"  	        property="use_yn" />
+    <result column="block_yn"        	property="block_yn" />
+    <result column="penalty_cnt" 	  	property="penalty_cnt" />
+  </association>
+  </resultMap>
+
+  <sql id="sql1">
+
+  </sql>
+
+  <insert id="insertUser" parameterType="string">
+    insert into user(svc_id, usr_id, name, email, hashpwd, tel, rgs_dtm, last_vst_dtm)
+            values(#{svc_id}, #{usr_id}, #{name}, #{email}, password(#{usr_pwd}), #{tel}, now(), now())
+  </insert>
+
+  <select id="findAllUsers" resultMap="UserMap" parameterType="map">
+    <include refid="sql1" />
+    <if test="keyword != null">
+      <bind name="pattern" value="'%' + keyword + '%'" />
+      where
+      email like #{pattern}
+      or nick like #{pattern}
+    </if>
+    order by uno usr_no desc
+  </select>
+
+  <select id="findAllAdmins" resultMap="UserMap" parameterType="map">
+    <include refid="sql1" />
+    order by usr_no desc
+  </select>
+
+
+</mapper>

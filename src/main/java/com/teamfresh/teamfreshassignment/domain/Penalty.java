@@ -11,8 +11,9 @@ public class Penalty {
   private Date createdDate;
   private Date updatedDate;
   private String state; //처리 상태(P: 진행중, Y: 완료. Z: 취소)
-  private int admin_comment;
-  private int usr_comment;
+  private int admin_memo;
+  private int usr_memo;
+
 
   public Penalty(int penalty_no, User admin_usr,
       User penalty_usr, VOC voc, String reason, Date createdDate, Date updatedDate,
@@ -25,8 +26,8 @@ public class Penalty {
     this.createdDate = createdDate;
     this.updatedDate = updatedDate;
     this.state = state;
-    this.admin_comment = admin_comment;
-    this.usr_comment = usr_comment;
+    this.admin_memo = admin_comment;
+    this.usr_memo = usr_comment;
   }
 
   public int getPenalty_no() {
@@ -101,21 +102,21 @@ public class Penalty {
     return this;
   }
 
-  public int getAdmin_comment() {
-    return admin_comment;
+  public int getAdmin_memo() {
+    return admin_memo;
   }
 
-  public Penalty setAdmin_comment(int admin_comment) {
-    this.admin_comment = admin_comment;
+  public Penalty setAdmin_memo(int admin_memo) {
+    this.admin_memo = admin_memo;
     return this;
   }
 
-  public int getUsr_comment() {
-    return usr_comment;
+  public int getUsr_memo() {
+    return usr_memo;
   }
 
-  public Penalty setUsr_comment(int usr_comment) {
-    this.usr_comment = usr_comment;
+  public Penalty setUsr_memo(int usr_memo) {
+    this.usr_memo = usr_memo;
     return this;
   }
 }

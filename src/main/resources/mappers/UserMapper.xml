@@ -6,7 +6,7 @@
 <mapper namespace="com.devil.dao.UserDao">
 
   <resultMap type="user"              id="UserMap">
-    <id column="usr_no"		            property="no" />
+    <id column="usr_no"		            property="usr_no" />
     <result column="svc_id" 	      	property="svc_id" />
     <result column="usr_id"      	  	property="usr_id" />
     <result column="name" 		        property="name" />

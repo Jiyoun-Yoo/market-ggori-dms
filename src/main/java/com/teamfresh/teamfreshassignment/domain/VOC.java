@@ -12,8 +12,8 @@ public class VOC {
   private Date updatedDate;
   private String state; //처리 상태(P: 진행중, Y: 완료. Z: 취소)
   private String penalty_yn; //패널티 여부
-  private int admin_comment;
-  private int driver_memo;
+  private int admin_memo;
+  private int fault_usr_memo;
 
   public int getVoc_no() {
     return voc_no;
@@ -96,21 +96,21 @@ public class VOC {
     return this;
   }
 
-  public int getAdmin_comment() {
-    return admin_comment;
+  public int getAdmin_memo() {
+    return admin_memo;
   }
 
-  public VOC setAdmin_comment(int admin_comment) {
-    this.admin_comment = admin_comment;
+  public VOC setAdmin_memo(int admin_memo) {
+    this.admin_memo = admin_memo;
     return this;
   }
 
-  public int getDriver_memo() {
-    return driver_memo;
+  public int getFault_usr_memo() {
+    return fault_usr_memo;
   }
 
-  public VOC setDriver_memo(int driver_memo) {
-    this.driver_memo = driver_memo;
+  public VOC setFault_usr_memo(int fault_usr_memo) {
+    this.fault_usr_memo = fault_usr_memo;
     return this;
   }
 }
