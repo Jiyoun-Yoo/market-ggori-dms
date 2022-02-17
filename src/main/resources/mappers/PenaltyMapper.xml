@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggori.dms.dao.PenaltyDao">
+
+  <resultMap type="user"                    id="PenaltyMap">
+    <id column="penalty_no"		            property="penalty_no" />
+    <result column="writer_no" 	      property="penalty_usr_no" />
+    <result column="rgs_dtm" 		      property="createdDate" />
+    <result column="rgs_dtm" 		      property="updatedDate" />
+    <result column="usr_check_yn" 	property="usr_check_yn" />
+    <result column="admin_memo" 	  	property="admin_memo" />
+    <result column="state"  	        property="state" />
+
+    <association property="admin_usr"           javaType="user">
+      <id column="admin_usr_no"		         property="usr_no" />
+      <result column="admin_usr_id"      	 property="usr_id" />
+      <result column="admin_name" 		     property="name" />
+      <result column="admin_yn"       	   property="admin_yn" />
+    </association>
+
+    <association property="penalty_usr"         javaType="user">
+      <id column="penalty_usr_no"		       property="usr_no" />
+      <result column="penalty_usr_id"     property="usr_id" />
+      <result column="penalty_name" 		   property="name" />
+      <result column="penalty_yn"       	 property="admin_yn" />
+    </association>
+
+  </resultMap>
+
+  <insert id="insertPenalty" parameterType="string">
+    insert into user(svc_id, usr_id, name, email, hashpwd, tel, rgs_dtm, last_vst_dtm)
+    values(#{svc_id}, #{usr_id}, #{name}, #{email}, password(#{usr_pwd}), #{tel}, now(), now())
+  </insert>
+
+
+</mapper>

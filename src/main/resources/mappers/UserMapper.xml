@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.devil.dao.UserDao">
+<mapper namespace="com.ggori.cms.dao.UserDao">
 
-  <resultMap type="user"              id="UserMap">
+  <resultMap type="user"                    id="UserMap">
     <id column="usr_no"		            property="usr_no" />
     <result column="svc_id" 	      	property="svc_id" />
     <result column="usr_id"      	  	property="usr_id" />
