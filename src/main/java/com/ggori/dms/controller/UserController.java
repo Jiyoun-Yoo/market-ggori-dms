@@ -1,5 +1,6 @@
 package com.ggori.dms.controller;
 
+import com.ggori.dms.domain.Delivery;
 import com.ggori.dms.domain.User;
 import com.ggori.dms.service.UserService;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -22,23 +25,15 @@ public class UserController {
   @Autowired UserService userService;
 
   @GetMapping("join")
-  public String join() {
-    return "user/join";
+  public ModelAndView join() {
+    ModelAndView modelAndView = new ModelAndView("user/join");
+    modelAndView.addObject("user", new User());
+
+    return modelAndView;
   }
 
   @PostMapping("join")
-  public RedirectView join(HttpServletRequest request, Model model, HttpSession session) {
-    String name = request.getParameter("name");
-    String usr_id = request.getParameter("usr_id");
-    String usr_pwd = request.getParameter("usr_pwd");
-    String email = request.getParameter("email");
-    String tel = request.getParameter("tel");
-    String admin_yn = request.getParameter("admin_yn");
-    String use_yn = request.getParameter("use_yn");
-    String block_yn = request.getParameter("block_yn");
-
-    User user = new User(name, usr_id, usr_pwd, email, tel, admin_yn, use_yn, block_yn);
-
+  public RedirectView join(HttpServletRequest request, Model model, HttpSession session, @ModelAttribute("user") User user) {
     try {
       userService.add(user);
     } catch(Exception e) {

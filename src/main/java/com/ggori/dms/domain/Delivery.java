@@ -6,16 +6,21 @@ public class Delivery {
   private int delivery_no;
   private User writer; //등록자
   private User admin_usr; //관리 담당자
-  private User penalty_usr; //배송 담당자
-  private String deliver_check_yn; //배송 담당자 확인 여부
+  private String requestedCompany; //요청업체
+  private User driver_usr; //배송 담당자
+  private String driver_check_yn; //배송 담당자 확인 여부
+  private String product; //배송 물품
   private String departure; //출발지
   private String destination; //도착지
-  private Date createdDate; //배송 요청 발생일
-  private Date requestedDate; //배송 요청일
+  private String createdDate; //배송 요청 발생일
+  private String requestedDate; //배송 요청일
   private Date completedDate; //배송일
   private String state; //진행 상태(D: 예정, P: 진행중, Y: 완료, Z:취소, D: 보류)
   private String detail;
   private String admin_memo;
+
+  public Delivery() {
+  }
 
   public Delivery(int no, User writer, User admin_usr,
       User penalty_usr, String departure, String destination, Date startDate, String state,
@@ -23,7 +28,7 @@ public class Delivery {
     this.delivery_no = no;
     this.writer = writer;
     this.admin_usr = admin_usr;
-    this.penalty_usr = penalty_usr;
+    this.driver_usr = penalty_usr;
     this.departure = departure;
     this.destination = destination;
     this.completedDate = startDate;
@@ -50,6 +55,14 @@ public class Delivery {
     return this;
   }
 
+  public String getProduct() {
+    return product;
+  }
+
+  public void setProduct(String product) {
+    this.product = product;
+  }
+
   public User getAdmin_usr() {
     return admin_usr;
   }
@@ -59,21 +72,29 @@ public class Delivery {
     return this;
   }
 
-  public User getPenalty_usr() {
-    return penalty_usr;
+  public String getRequestedCompany() {
+    return requestedCompany;
   }
 
-  public Delivery setPenalty_usr(User penalty_usr) {
-    this.penalty_usr = penalty_usr;
+  public void setRequestedCompany(String requestedCompany) {
+    this.requestedCompany = requestedCompany;
+  }
+
+  public User getDriver_usr() {
+    return driver_usr;
+  }
+
+  public Delivery setDriver_usr(User driver_usr) {
+    this.driver_usr = driver_usr;
     return this;
   }
 
-  public String getDeliver_check_yn() {
-    return deliver_check_yn;
+  public String getDriver_check_yn() {
+    return driver_check_yn;
   }
 
-  public Delivery setDeliver_check_yn(String deliver_check_yn) {
-    this.deliver_check_yn = deliver_check_yn;
+  public Delivery setDriver_check_yn(String driver_check_yn) {
+    this.driver_check_yn = driver_check_yn;
     return this;
   }
 
@@ -95,22 +116,20 @@ public class Delivery {
     return this;
   }
 
-  public Date getCreatedDate() {
+  public String getCreatedDate() {
     return createdDate;
   }
 
-  public Delivery setCreatedDate(Date createdDate) {
+  public void setCreatedDate(String createdDate) {
     this.createdDate = createdDate;
-    return this;
   }
 
-  public Date getRequestedDate() {
+  public String getRequestedDate() {
     return requestedDate;
   }
 
-  public Delivery setRequestedDate(Date requestedDate) {
+  public void setRequestedDate(String requestedDate) {
     this.requestedDate = requestedDate;
-    return this;
   }
 
   public Date getCompletedDate() {
@@ -149,4 +168,24 @@ public class Delivery {
     return this;
   }
 
+  @Override
+  public String toString() {
+    return "Delivery{" +
+        "delivery_no=" + delivery_no +
+        ", writer=" + writer +
+        ", admin_usr=" + admin_usr +
+        ", requestedCompany='" + requestedCompany + '\'' +
+        ", driver_usr=" + driver_usr +
+        ", driver_check_yn='" + driver_check_yn + '\'' +
+        ", product='" + product + '\'' +
+        ", departure='" + departure + '\'' +
+        ", destination='" + destination + '\'' +
+        ", createdDate='" + createdDate + '\'' +
+        ", requestedDate='" + requestedDate + '\'' +
+        ", completedDate=" + completedDate +
+        ", state='" + state + '\'' +
+        ", detail='" + detail + '\'' +
+        ", admin_memo='" + admin_memo + '\'' +
+        '}';
+  }
 }

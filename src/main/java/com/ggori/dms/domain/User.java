@@ -18,6 +18,9 @@ public class User {
   private String block_yn; //차단 여부
   private String admin_memo; //관리자 메모
 
+  public User() {
+  }
+
   public User(String name, String usr_id, String usr_pwd, String email,  String tel, String admin_yn, String use_yn, String block_yn) {
     this.name = name;
     this.usr_id = usr_id;
