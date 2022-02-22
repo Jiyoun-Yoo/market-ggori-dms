@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 @Component
 public class AdminInterceptor implements HandlerInterceptor {
@@ -27,10 +28,16 @@ public class AdminInterceptor implements HandlerInterceptor {
 
     if(loginUser == null || !loginUser.getAdmin_yn().equalsIgnoreCase("y")) {
       (request.getSession()).setAttribute("msg", "관리자 권한이 없는 사용자입니다.");
-      response.sendRedirect(request.getServletContext().getContextPath() + "/error");
+      response.sendRedirect(request.getServletContext().getContextPath() + "/login-error");
       return false;
     }
 
     return true;
+  }
+
+  @Override
+  public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+      ModelAndView modelAndView) throws Exception {
+    (request.getSession()).setAttribute("msg", "");
   }
 }

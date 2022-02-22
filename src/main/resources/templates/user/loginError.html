@@ -15,8 +15,13 @@
 </th:block>
 
 <div layout:fragment="content">
-  <div style="text-align:center; font-size: 15px; padding: 100px 0px;">
-    <p th:text="${msg}">login error message</p>
+  <div style="text-align:center;  padding: 100px 0px;">
+    <div style="text-align:center; padding: 50px 0px;">
+      <h1>Error가 발생했습니다.</h1>
+    <div style="font-size:20px;" >
+      사유: <div th:text="${msg}">login error message</div>
+    </div>
+    </div>
   </div>
 </div>
 </html>

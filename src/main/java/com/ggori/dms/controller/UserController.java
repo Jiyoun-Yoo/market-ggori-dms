@@ -85,7 +85,7 @@ public class UserController {
     User usr_blocked = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
     User usr_notInUse = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
 
-    User user = usr_general;
+    User user = usr_admin;
 
 //    try {
 //      user = userService.get(usr_id, usr_pwd);
@@ -96,13 +96,7 @@ public class UserController {
 
     if(user == null) {
       session.setAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다. <br> 입력하신 정보가 정확한지 확인하시길 바랍니다.");
-      return new RedirectView("/user/login-error");
-//    } else if(user.getBlock_yn().equalsIgnoreCase("y")) {
-//      session.setAttribute("msg", "접근이 차단된 계정으로 로그인하셨습니다.");
-//      return new RedirectView("/user/login-error");
-//    } else if (user.getUse_yn().equalsIgnoreCase("n")) {
-//      session.setAttribute("msg", "사용이 중지된 계정으로 로그인하셨습니다.");
-//      return new RedirectView("/user/login-error");
+      return new RedirectView("/login-error");
     }
 
     session.setAttribute("loginUser", user);
@@ -120,7 +114,6 @@ public class UserController {
 
   @GetMapping("login-error")
   public String loginError(Model model, HttpSession session) {
-    LOGGER.info("#####  " + session.getAttribute("msg"));
     model.addAttribute("msg", session.getAttribute("msg"));
     return "user/loginError";
   }

@@ -17,7 +17,7 @@ public class CommonController {
     User user = (User) session.getAttribute("loginUser");
 
     if(user == null) {
-      return new RedirectView("/user/login");
+      return new RedirectView("/login");
     } else if (user.getAdmin_yn().equalsIgnoreCase("y")) {
       return new RedirectView("/admin/main");
 //      return "admin/main";
@@ -27,12 +27,10 @@ public class CommonController {
 //    return "common/main";
   }
 
-  @GetMapping("error")
-  public String error(Model model, HttpSession session) {
-    model.addAttribute("msg", " 하헤히호후 ");
-//    model.addAttribute("msg", session.getAttribute("msg"));
-    return "error";
-  }
+//  @GetMapping("error")
+//  public String error(Model model, HttpSession session) {
+//    return "error";
+//  }
 
   @GetMapping("ask")
   public String ask(Model model) {
