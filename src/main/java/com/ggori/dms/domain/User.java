@@ -1,7 +1,5 @@
 package com.ggori.dms.domain;
 
-import java.util.Date;
-
 public class User {
   private int usr_no;
   private String svc_id;
@@ -10,8 +8,8 @@ public class User {
   private String name;
   private String tel;
   private String usr_pwd;
-  private Date createdDate; //가입일
-  private Date recentVisitDate;
+  private String createdDtm; //가입일
+  private String recentVisitDtm;
   private int penalty_cnt; //패널티 횟수
   private String admin_yn; //관리자 여부
   private String use_yn; //사용 여부
@@ -94,21 +92,21 @@ public class User {
     return this;
   }
 
-  public Date getCreatedDate() {
-    return createdDate;
+  public String getCreatedDtm() {
+    return createdDtm;
   }
 
-  public User setCreatedDate(Date createdDate) {
-    this.createdDate = createdDate;
+  public User setCreatedDtm(String createdDtm) {
+    this.createdDtm = createdDtm;
     return this;
   }
 
-  public Date getRecentVisitDate() {
-    return recentVisitDate;
+  public String getRecentVisitDtm() {
+    return recentVisitDtm;
   }
 
-  public User setRecentVisitDate(Date recentVisitDate) {
-    this.recentVisitDate = recentVisitDate;
+  public User setRecentVisitDtm(String recentVisitDtm) {
+    this.recentVisitDtm = recentVisitDtm;
     return this;
   }
 
@@ -155,5 +153,25 @@ public class User {
   public User setAdmin_memo(String admin_memo) {
     this.admin_memo = admin_memo;
     return this;
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+        "usr_no=" + usr_no +
+        ", svc_id='" + svc_id + '\'' +
+        ", usr_id='" + usr_id + '\'' +
+        ", email='" + email + '\'' +
+        ", name='" + name + '\'' +
+        ", tel='" + tel + '\'' +
+        ", usr_pwd='" + usr_pwd + '\'' +
+        ", createdDate=" + createdDtm +
+        ", recentVisitDate=" + recentVisitDtm +
+        ", penalty_cnt=" + penalty_cnt +
+        ", admin_yn='" + admin_yn + '\'' +
+        ", use_yn='" + use_yn + '\'' +
+        ", block_yn='" + block_yn + '\'' +
+        ", admin_memo='" + admin_memo + '\'' +
+        '}';
   }
 }
