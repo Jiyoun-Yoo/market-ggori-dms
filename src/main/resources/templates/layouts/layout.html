@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lagn="ko"
+<html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
@@ -17,6 +17,9 @@
   <!-- 사용자 CSS & Script  -->
   <link th:href="@{/css/common.css}" rel="stylesheet">
   <script th:src="@{/js/common.js}"></script>
+
+  <style th:block layout:fragment="css"></style>
+  <script th:block layout:fragment="script"></script>
 </head>
 
 <body>

@@ -34,7 +34,7 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public int add(User user) throws Exception {
+  public int addUser(User user) throws Exception {
     return 0;
   }
 

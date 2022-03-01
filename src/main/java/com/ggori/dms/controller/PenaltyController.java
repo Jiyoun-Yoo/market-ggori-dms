@@ -1,5 +1,7 @@
 package com.ggori.dms.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,9 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequestMapping("penalty")
 public class PenaltyController {
+
+  private static final Logger LOGGER = LogManager.getLogger(PenaltyController.class);
+
 
   @GetMapping("new")
   public String createPenalty(Model model) {

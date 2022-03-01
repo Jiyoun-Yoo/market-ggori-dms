@@ -20,7 +20,7 @@ public class LoginInterceptor implements HandlerInterceptor {
       = Arrays.asList("/user/detail", "/delivery/**" ,"/vox/**", "/penalty/**");
 
   public List login_unnecessary
-      = Arrays.asList("/main", "/join", "/login" ,"/common/ask", "/login-error");
+      = Arrays.asList("/main", "/join", "/login" ,"/common/ask", "/error");
 
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -34,11 +34,11 @@ public class LoginInterceptor implements HandlerInterceptor {
       return false;
     } else if(loginUser.getBlock_yn().equalsIgnoreCase("y")) {
       (request.getSession()).setAttribute("msg", "접근이 차단된 계정으로 로그인하셨습니다.");
-      response.sendRedirect(request.getServletContext().getContextPath() + "/login-error");
+      response.sendRedirect(request.getServletContext().getContextPath() + "/errorMsg");
       return false;
     } else if (loginUser.getUse_yn().equalsIgnoreCase("n")) {
       (request.getSession()).setAttribute("msg", "사용이 중지된 계정으로 로그인하셨습니다.");
-      response.sendRedirect(request.getServletContext().getContextPath() + "/login-error");
+      response.sendRedirect(request.getServletContext().getContextPath() + "/errorMsg");
       return false;
     }
 

@@ -1,6 +1,5 @@
 package com.ggori.dms.controller;
 
-import com.ggori.dms.domain.Delivery;
 import com.ggori.dms.domain.User;
 import com.ggori.dms.service.UserService;
 import javax.servlet.http.HttpServletRequest;
@@ -33,9 +32,10 @@ public class UserController {
   }
 
   @PostMapping("join")
-  public RedirectView join(HttpServletRequest request, Model model, HttpSession session, @ModelAttribute("user") User user) {
+  public RedirectView join(HttpServletRequest request, Model model, @ModelAttribute("user") User user) {
     try {
-      userService.add(user);
+      LOGGER.info(user.toString());
+      userService.addUser(user);
     } catch(Exception e) {
       e.printStackTrace();
     }
@@ -80,7 +80,7 @@ public class UserController {
     User usr_blocked = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
     User usr_notInUse = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
 
-    User user = usr_admin;
+    User user = usr_blocked;
 
 //    try {
 //      user = userService.get(usr_id, usr_pwd);
@@ -91,7 +91,7 @@ public class UserController {
 
     if(user == null) {
       session.setAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다. <br> 입력하신 정보가 정확한지 확인하시길 바랍니다.");
-      return new RedirectView("/login-error");
+      return new RedirectView("/errorMsg");
     }
 
     session.setAttribute("loginUser", user);
@@ -105,12 +105,6 @@ public class UserController {
     }
 
     return new RedirectView("/main");
-  }
-
-  @GetMapping("login-error")
-  public String loginError(Model model, HttpSession session) {
-    model.addAttribute("msg", session.getAttribute("msg"));
-    return "user/loginError";
   }
 
   @GetMapping("user/main")

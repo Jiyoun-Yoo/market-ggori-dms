@@ -11,7 +11,10 @@
 
 <th:block layout:fragment="script">
   <script>
-    document.querySelector("#userForm").onsubmit = () => {
+    jQuery( document ).ready( function( $ ) {
+    } );
+
+    document.querySelector("#joinForm").onsubmit = () => {
       var name = document.querySelector("#name");
       var svc_id = document.querySelector("#svc_id");
       var usr_id = document.querySelector("#usr_id");
@@ -40,11 +43,10 @@
 </th:block>
 
 <div layout:fragment="content">
-  <div id="user">
+  <div id="user_join">
     <form id="joinForm" th:action="@{join}" method='post'>
       <div style="text-align: center; padding: 50px 0px;">
-        <p style="font-size: 20px; font-weight: bold;">
-          마켓 꼬리 배송관리 시스템 회원가입</p>
+        <p style="font-size: 20px; font-weight: bold;">마켓 꼬리 배송관리 시스템 회원가입</p>
 
         <div class="w-50 center" style="font-size: 12px;">
 
@@ -88,7 +90,7 @@
           <div class="mb-3 row">
             <label for="email" class='form-label col-sm-2 col-form-label'>이메일</label>
             <div class="col-sm-10">
-              <input id="email" th:field="${user.email}" type='email' class="form-control" placeholder="Email Address (eg. Team@fresh.com)">
+              <input id="email" th:field="${user.email}" type='email' class="form-control" placeholder="Email Address (eg. ggori@test.com)">
             </div>
           </div>
 
@@ -105,11 +107,16 @@
         <input style="display: none;" type='text' class="form-control" name='block_yn' value="n">
 
         <div style="margin-top:10px; margin-bottom: 10px;">
-          <button type="submit" class="btn btn-primary btn-lg">회원 가입</button>
+          <button id="btn_join" type="submit" class="btn btn-primary btn-lg">회원 가입</button>
           <a href="/user/join" class="btn btn-secondary btn-lg">취소</a>
+          <a id="testBtn" href="#" class="btn btn-secondary btn-lg">취소</a>
         </div>
       </div>
     </form>
+  </div>
+
+  <div id="afterJoining">
+    <p style="font-size: 20px; font-weight: bold;">회원 가입이 완료되었습니다.</p>
   </div>
 </div>
 </html>
