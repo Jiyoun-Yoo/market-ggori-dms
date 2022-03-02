@@ -6,6 +6,37 @@
 
 <th:block layout:fragment="css">
   <style>
+    table {
+      border-collapse: collapse;
+      border-style: hidden;
+      margin: auto;
+      display: block;
+      font-size : 15px;
+      border-radius: 10px;
+      background-color: #2E3034;
+      width: 1000px;
+    }
+
+    thead {
+      width: 1000px;
+    }
+
+    thead tr {
+      text-align: center;
+      border-bottom: 3px solid #787878;
+    }
+
+    tbody, td, tfoot, th, thead, tr {
+      width: 1000px;
+    }
+
+    tbody {
+      text-align: left;
+    }
+    th, td {
+      padding: 15px;
+      text-align: center;
+    }
   </style>
 </th:block>
 
@@ -16,8 +47,46 @@
 
 <div layout:fragment="content">
   <div style="text-align: center; padding: 50px 0px;">
-    <p style="font-size: 20px; font-weight: bold;">
-      Delivery List</p>
+    <p style="font-size: 20px; font-weight: bold;">배송 목록</p>
+    <p style="font-size: 20px; font-weight: bold;"></p>
+
+    <table>
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">출발지</th>
+        <th scope="col">도착지</th>
+        <th scope="col">요청업체</th>
+        <th scope="col">운송담당</th>
+        <th scope="col">내부담당</th>
+        <th scope="col">물품정보</th>
+        <th scope="col">운반일자</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>@fat</td>
+        <td>@fat</td>
+        <td>@fat</td>
+        <td>@fat</td>
+      </tr>
+      </tbody>
+    </table>
+
   </div>
 </div>
 </html>

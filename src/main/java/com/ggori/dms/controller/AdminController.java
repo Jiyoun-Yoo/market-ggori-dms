@@ -14,12 +14,8 @@ public class AdminController {
 
   private static final Logger LOGGER = LogManager.getLogger(AdminController.class);
 
-
-  HttpSession session;
-
   @GetMapping("main")
   public String main(Model model) {
-
     return "admin/main";
   }
 }

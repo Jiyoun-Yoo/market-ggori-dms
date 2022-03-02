@@ -35,7 +35,7 @@ public class UserController {
   }
 
   @PostMapping("join")
-  public RedirectView join(HttpServletRequest request, Model model, @ModelAttribute("user") User user) {
+  public RedirectView join(Model model, @ModelAttribute("user") User user) {
     try {
       user.setCreatedDtm(dateUtil.getNow());
       userService.addUser(user);
@@ -82,16 +82,18 @@ public class UserController {
     User usr_blocked = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
     User usr_notInUse = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
 
-    User user = usr_blocked;
+    User user = usr_admin;
 
-    try {
-      user = userService.getUser(usr_id, usr_pwd);
-    } catch(Exception e) {
-      e.printStackTrace();
-    }
+//    try {
+//      user = userService.getUser(usr_id, usr_pwd);
+//    } catch(Exception e) {
+//      e.printStackTrace();
+//    }
 
-    session.setAttribute("login_user", user);
     user.setRecentVisitDtm(dateUtil.getNow());
+    session.setAttribute("login_user", user);
+
+    LOGGER.info(user);
 
     if(user == null) {
       session.setAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다. <br> 입력하신 정보가 정확한지 확인하시길 바랍니다.");

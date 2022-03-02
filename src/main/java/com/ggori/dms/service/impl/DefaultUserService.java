@@ -19,7 +19,12 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public User get(String id, String password) throws Exception {
+  public User getUser(String id, String password) throws Exception {
+    return null;
+  }
+
+  @Override
+  public User getUserByName(String name) throws Exception {
     return null;
   }
 
@@ -39,7 +44,7 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public int update(User user) throws Exception {
+  public int updateUser(User user) throws Exception {
     return 0;
   }
 

@@ -1,9 +1,10 @@
 package com.ggori.dms.controller;
 
 import com.ggori.dms.domain.Delivery;
-import com.ggori.dms.interceptor.LoginInterceptor;
+import com.ggori.dms.domain.User;
+import com.ggori.dms.service.DeliveryService;
 import com.ggori.dms.service.UserService;
-import javax.servlet.http.HttpServletRequest;
+import com.ggori.dms.util.DateUtil;
 import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,8 +24,10 @@ public class DeliveryController {
 
   private static final Logger LOGGER = LogManager.getLogger(DeliveryController.class);
 
-  @Autowired
-  UserService userService;
+  @Autowired DeliveryService deliveryService;
+  @Autowired UserService userService;
+
+  DateUtil dateUtil = new DateUtil();
 
   @GetMapping("new")
   public ModelAndView createDevlivery() {
@@ -35,11 +38,30 @@ public class DeliveryController {
   }
 
   @PostMapping("new")
-  public RedirectView createDevlivery(HttpServletRequest request, HttpSession session, @ModelAttribute("delivery") Delivery delivery) {
-    LOGGER.info(delivery.toString());
+  public RedirectView createDevlivery(Model model, HttpSession session, @ModelAttribute("delivery") Delivery delivery) {
 
-//    return "delivery/readDelivery";
-    return new RedirectView("/delivery/detail");
+    User user = (User) session.getAttribute("login_user");
+
+    delivery.setWriter(user);
+    delivery.setRequestedDateTime(delivery.getRequestedDateTime().replace(",", " "));
+
+    try {
+      //TODO driver, admin user 검색 방식 develop
+      delivery.setDriver_usr(userService.getUserByName(delivery.getDriver_usr().getName()));
+      delivery.setAdmin_usr(userService.getUserByName(delivery.getAdmin_usr().getName()));
+
+      delivery.setCreatedDtm(dateUtil.getNow());
+
+      LOGGER.info(delivery.toString());
+
+      deliveryService.addDelivery(delivery);
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+
+    model.addAttribute("msg", "배송 등록이 완료되었습니다.");
+
+    return new RedirectView("/delivery/detail" );
   }
 
   @GetMapping("list")

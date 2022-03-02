@@ -13,7 +13,7 @@ public class Delivery {
   private String departure; //출발지
   private String destination; //도착지
   private String createdDtm; //배송 요청 발생일
-  private String requestedDtm; //배송 요청일
+  private String requestedDateTime; //배송 요청일
   private Date completedDtm; //배송일
   private String state; //진행 상태(D: 예정, P: 진행중, Y: 완료, Z:취소, D: 보류)
   private String detail;
@@ -124,12 +124,12 @@ public class Delivery {
     this.createdDtm = createdDtm;
   }
 
-  public String getRequestedDtm() {
-    return requestedDtm;
+  public String getRequestedDateTime() {
+    return requestedDateTime;
   }
 
-  public void setRequestedDtm(String requestedDtm) {
-    this.requestedDtm = requestedDtm;
+  public void setRequestedDateTime(String requestedDateTime) {
+    this.requestedDateTime = requestedDateTime;
   }
 
   public Date getCompletedDtm() {
@@ -180,8 +180,8 @@ public class Delivery {
         ", product='" + product + '\'' +
         ", departure='" + departure + '\'' +
         ", destination='" + destination + '\'' +
-        ", createdDate='" + createdDtm + '\'' +
-        ", requestedDate='" + requestedDtm + '\'' +
+        ", createdDtm='" + createdDtm + '\'' +
+        ", requestedDateTime='" + requestedDateTime + '\'' +
         ", completedDate=" + completedDtm +
         ", state='" + state + '\'' +
         ", detail='" + detail + '\'' +
