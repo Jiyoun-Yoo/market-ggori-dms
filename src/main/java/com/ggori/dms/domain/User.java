@@ -165,8 +165,8 @@ public class User {
         ", name='" + name + '\'' +
         ", tel='" + tel + '\'' +
         ", usr_pwd='" + usr_pwd + '\'' +
-        ", createdDate=" + createdDtm +
-        ", recentVisitDate=" + recentVisitDtm +
+        ", createdDtm=" + createdDtm +
+        ", recentVisitDtm=" + recentVisitDtm +
         ", penalty_cnt=" + penalty_cnt +
         ", admin_yn='" + admin_yn + '\'' +
         ", use_yn='" + use_yn + '\'' +

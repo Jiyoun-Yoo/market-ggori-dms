@@ -12,9 +12,9 @@ public class Delivery {
   private String product; //배송 물품
   private String departure; //출발지
   private String destination; //도착지
-  private String createdDate; //배송 요청 발생일
-  private String requestedDate; //배송 요청일
-  private Date completedDate; //배송일
+  private String createdDtm; //배송 요청 발생일
+  private String requestedDtm; //배송 요청일
+  private Date completedDtm; //배송일
   private String state; //진행 상태(D: 예정, P: 진행중, Y: 완료, Z:취소, D: 보류)
   private String detail;
   private String admin_memo;
@@ -31,7 +31,7 @@ public class Delivery {
     this.driver_usr = penalty_usr;
     this.departure = departure;
     this.destination = destination;
-    this.completedDate = startDate;
+    this.completedDtm = startDate;
     this.state = state;
     this.detail = detail;
     this.admin_memo = admin_comment;
@@ -116,28 +116,28 @@ public class Delivery {
     return this;
   }
 
-  public String getCreatedDate() {
-    return createdDate;
+  public String getCreatedDtm() {
+    return createdDtm;
   }
 
-  public void setCreatedDate(String createdDate) {
-    this.createdDate = createdDate;
+  public void setCreatedDtm(String createdDtm) {
+    this.createdDtm = createdDtm;
   }
 
-  public String getRequestedDate() {
-    return requestedDate;
+  public String getRequestedDtm() {
+    return requestedDtm;
   }
 
-  public void setRequestedDate(String requestedDate) {
-    this.requestedDate = requestedDate;
+  public void setRequestedDtm(String requestedDtm) {
+    this.requestedDtm = requestedDtm;
   }
 
-  public Date getCompletedDate() {
-    return completedDate;
+  public Date getCompletedDtm() {
+    return completedDtm;
   }
 
-  public Delivery setCompletedDate(Date completedDate) {
-    this.completedDate = completedDate;
+  public Delivery setCompletedDtm(Date completedDtm) {
+    this.completedDtm = completedDtm;
     return this;
   }
 
@@ -180,9 +180,9 @@ public class Delivery {
         ", product='" + product + '\'' +
         ", departure='" + departure + '\'' +
         ", destination='" + destination + '\'' +
-        ", createdDate='" + createdDate + '\'' +
-        ", requestedDate='" + requestedDate + '\'' +
-        ", completedDate=" + completedDate +
+        ", createdDate='" + createdDtm + '\'' +
+        ", requestedDate='" + requestedDtm + '\'' +
+        ", completedDate=" + completedDtm +
         ", state='" + state + '\'' +
         ", detail='" + detail + '\'' +
         ", admin_memo='" + admin_memo + '\'' +
