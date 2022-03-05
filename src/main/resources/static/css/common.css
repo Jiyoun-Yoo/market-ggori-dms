@@ -18,3 +18,8 @@ footer {
   float: none;
   margin: 0 auto;
 }
+
+/* a tag 밑줄 없애기 */
+a:link { color: white; text-decoration: none;}
+a:visited { color: white; text-decoration: none;}
+a:hover { color: lightgrey; text-decoration: none;}

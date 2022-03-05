@@ -35,11 +35,10 @@
 <div layout:fragment="content">
   <div id="user">
     <form id="joinForm" th:action="@{new}" method='post'>
-      <div style="text-align: center; padding: 50px 0px;">
-        <p style="font-size: 20px; font-weight: bold;">
-          Market Ggori DMS - 신규 배송 등록</p>
+      <div style="text-align: center; padding: 20px 0px;">
+        <p style="font-size: 20px; font-weight: bold;">Market Ggori DMS - 신규 배송 등록</p>
 
-        <div class="w-50 center" style="font-size: 12px;">
+        <div class="w-50 center" style="font-size: 15px;">
 
           <div class="mb-3 row">
             <label for="departure" class='form-label col-sm-2 col-form-label'>출발지</label>
@@ -94,9 +93,28 @@
           </div>
 
           <div class="mb-3 row">
-            <label for="admin_memo" class='form-label col-sm-2 col-form-label'>관리자 메모</label>
+            <label for="detail" class='form-label col-sm-2 col-form-label'>배송 상태</label>
             <div class="col-sm-10">
-              <input id="admin_memo" th:field="${delivery.admin_memo}" type='text' maxlength="50" class="form-control" placeholder="관리자 메모(50자까지 입력 가능)">
+              <select class="form-select" id="state"th:field="${delivery.state}"  aria-label="Floating label select example">
+                <option value="D" selected>예정(D)</option>
+                <option value="P">진행중(P)</option>
+                <option value="Y">완료(Y)</option>
+              </select>
+              <label for="state">Works with selects</label>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="detail" class='form-label col-sm-2 col-form-label'>배송 상세 내용</label>
+            <div class="col-sm-10">
+              <input id="detail" th:field="${delivery.detail}" type='text' maxlength="100" class="form-control" placeholder="배송 상세 내용(100자까지 입력 가능)">
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="admin_memo" class='form-label col-sm-2 col-form-label'>관리자 전용 메모</label>
+            <div class="col-sm-10">
+              <input id="admin_memo" th:field="${delivery.admin_memo}" type='text' maxlength="50" class="form-control" placeholder="관리자 메모(50자까지 입력 가능), 관리자만 열람 가능">
             </div>
           </div>
         </div>
