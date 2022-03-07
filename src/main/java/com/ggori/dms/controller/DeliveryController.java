@@ -44,6 +44,7 @@ public class DeliveryController {
 
     delivery.setWriter(user);
     delivery.setRequestedDateTime(delivery.getRequestedDateTime().replace(",", " "));
+    delivery.setState("D");
 
     try {
       //TODO driver, admin user 검색 방식 develop
@@ -59,7 +60,7 @@ public class DeliveryController {
       e.printStackTrace();
     }
 
-    model.addAttribute("msg", "배송 등록이 완료되었습니다.");
+    model.addAttribute("alertMSG", "배송 등록이 완료되었습니다.");
 
     return new RedirectView("/delivery/detail" );
   }
