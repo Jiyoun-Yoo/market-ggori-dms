@@ -17,10 +17,10 @@ public class LoginInterceptor implements HandlerInterceptor {
   private static final Logger LOGGER = LogManager.getLogger(LoginInterceptor.class);
 
   public List login_necessary
-      = Arrays.asList("/user/detail", "/delivery/**" ,"/vox/**", "/penalty/**");
+      = Arrays.asList("/user/mypage", "/delivery/**" ,"/vox/**", "/penalty/**");
 
   public List login_unnecessary
-      = Arrays.asList("/main", "/join", "/login" ,"/common/ask", "/error");
+      = Arrays.asList("/main", "/join", "/login" ,"/common/ask", "/error", "/errorMsg");
 
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -29,15 +29,15 @@ public class LoginInterceptor implements HandlerInterceptor {
     User loginUser = (User) request.getSession().getAttribute("loginUser");
 
     if(loginUser == null) {
-      (request.getSession()).setAttribute("msg", "로그인 회원만 접근 가능한 페이지입니다.");
+      (request.getSession()).setAttribute("errorMsg", "로그인 회원만 접근 가능한 페이지입니다.");
       response.sendRedirect(request.getServletContext().getContextPath() + "/login");
       return false;
     } else if(loginUser.getBlock_yn().equalsIgnoreCase("y")) {
-      (request.getSession()).setAttribute("msg", "접근이 차단된 계정으로 로그인하셨습니다.");
+      (request.getSession()).setAttribute("errorMsg", "접근이 차단된 계정으로 로그인하셨습니다.");
       response.sendRedirect(request.getServletContext().getContextPath() + "/errorMsg");
       return false;
     } else if (loginUser.getUse_yn().equalsIgnoreCase("n")) {
-      (request.getSession()).setAttribute("msg", "사용이 중지된 계정으로 로그인하셨습니다.");
+      (request.getSession()).setAttribute("errorMsg", "사용이 중지된 계정으로 로그인하셨습니다.");
       response.sendRedirect(request.getServletContext().getContextPath() + "/errorMsg");
       return false;
     }

@@ -82,7 +82,7 @@ public class UserController {
     User usr_blocked = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
     User usr_notInUse = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
 
-    User user = usr_admin;
+    User user = usr_general;
 
 //    try {
 //      user = userService.getUser(usr_id, usr_pwd);
@@ -116,6 +116,11 @@ public class UserController {
   @GetMapping("user/main")
   public String main() {
     return "user/main";
+  }
+
+  @GetMapping("user/mypage")
+  public String detail() {
+    return "user/detail";
   }
 
   @GetMapping("user/ask")
