@@ -1,7 +1,7 @@
 package com.ggori.dms.config;
 
-import com.ggori.dms.interceptor.AdminInterceptor;
-import com.ggori.dms.interceptor.LoginInterceptor;
+import com.ggori.dms.web.interceptor.AdminInterceptor;
+import com.ggori.dms.web.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
