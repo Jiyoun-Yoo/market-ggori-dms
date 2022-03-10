@@ -40,8 +40,8 @@ public class CommonController {
 
   @GetMapping("errorMsg")
   public String error(Model model, HttpSession session) {
-    LOGGER.info(session.getAttribute("msg"));
-    model.addAttribute("msg", session.getAttribute("msg"));
+    LOGGER.info(session.getAttribute("errorMsg"));
+    model.addAttribute("errorMsg", session.getAttribute("errorMsg"));
     return "/errorMsg";
   }
 

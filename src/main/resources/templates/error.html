@@ -16,16 +16,8 @@
 
 <div layout:fragment="content">
   <div style="text-align:center;  padding: 100px 0px;">
-    <div style="text-align:center; padding: 50px 0px;">
-      <th:block th:if="${errorMsg != '' || errorMsg != null}">
-        <h1>Error가 발생했습니다.</h1>
-        <div style="font-size:20px;" >
-          사유: <span th:text="${errorMsg}">error message</span>
-        </div>
-      </th:block>
-      <th:block th:if="${errorMsg == '' || errorMsg == null}">
-        <h1>원인을 알 수 없는 Error가 발생했습니다.</h1>
-      </th:block>
+    <div style="text-align:center; padding: 100px 0px;">
+      <h1>Error가 발생했습니다.</h1>
     </div>
 
     <div>

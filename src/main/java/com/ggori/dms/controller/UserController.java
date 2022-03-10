@@ -128,4 +128,11 @@ public class UserController {
     return "user/ask";
   }
 
+  @GetMapping("user/logout")
+  public String logout(HttpSession session) {
+    session.invalidate();
+    return "user/main";
+  }
+
+
 }
