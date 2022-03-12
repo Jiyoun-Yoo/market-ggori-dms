@@ -1,4 +1,4 @@
-package com.ggori.dms.controller;
+package com.ggori.dms.web.controller;
 
 import com.ggori.dms.domain.User;
 import com.ggori.dms.service.UserService;
@@ -82,7 +82,7 @@ public class UserController {
     User usr_blocked = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
     User usr_notInUse = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
 
-    User user = usr_general;
+    User user = usr_admin;
 
 //    try {
 //      user = userService.getUser(usr_id, usr_pwd);
@@ -119,7 +119,10 @@ public class UserController {
   }
 
   @GetMapping("user/mypage")
-  public String detail() {
+  public String detail() throws Exception {
+    LOGGER.info(userService.getUserByName("유지연")
+);
+
     return "user/detail";
   }
 

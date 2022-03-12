@@ -1,4 +1,4 @@
-package com.ggori.dms.controller;
+package com.ggori.dms.web.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +14,6 @@ import org.springframework.web.servlet.view.RedirectView;
 public class PenaltyController {
 
   private static final Logger LOGGER = LogManager.getLogger(PenaltyController.class);
-
 
   @GetMapping("new")
   public String createPenalty(Model model) {

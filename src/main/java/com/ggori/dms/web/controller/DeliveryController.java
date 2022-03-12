@@ -1,4 +1,4 @@
-package com.ggori.dms.controller;
+package com.ggori.dms.web.controller;
 
 import com.ggori.dms.domain.Delivery;
 import com.ggori.dms.domain.User;

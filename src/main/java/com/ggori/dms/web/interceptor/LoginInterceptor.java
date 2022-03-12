@@ -1,4 +1,4 @@
-package com.ggori.dms.interceptor;
+package com.ggori.dms.web.interceptor;
 
 import com.ggori.dms.domain.User;
 import java.util.Arrays;

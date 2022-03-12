@@ -1,4 +1,4 @@
-package com.ggori.dms.controller;
+package com.ggori.dms.web.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +29,6 @@ public class VOCController {
   public String readVOC() {
     return "voc/readVOC";
   }
-
 
   @GetMapping("list")
   public String penaltyList(Model model) {
