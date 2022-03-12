@@ -17,16 +17,16 @@
 <div layout:fragment="content">
   <div id="common">
   <form id="askForm" th:action="@{ask}" method='post'>
-    <div style="text-align: center;">
-      <p style="font-size: 20px; font-weight: bold;">마켓 꼬리에 문의하기</p>
+    <div style="text-align: center; padding: 20px 0px;">
+      <p style="font-size: 20px; font-weight: bold;">1:1 문의</p>
 
 <!--      <div class="w-50 center">-->
 <!--        <input id="inputContent" type="text" class="form-control" name='inputContent'-->
 <!--               height="300" width="500" placeholder="문의하실 내용을 입력하세요.">-->
 <!--      </div>-->
 
-      <div class="center">
-        <textarea id="inputContent" class="" cols="100" rows="10"
+      <div class="center" style="padding: 10px 0px;">
+        <textarea id="inputContent" class="" cols="130" rows="15"
                   placeholder="문의하실 내용을 입력하세요."></textarea>
       </div>
 
@@ -49,7 +49,7 @@
         </div>
       </div>
 
-      <div style="margin-top:10px; margin-bottom: 10px;">
+      <div style="margin-top:10px; margin-bottom: 10px; padding: 10px 0px;">
         <button type="submit" class="btn btn-primary btn-lg">등록</button>
         <a href="main" class="btn btn-secondary btn-lg">취소</a>
       </div>
