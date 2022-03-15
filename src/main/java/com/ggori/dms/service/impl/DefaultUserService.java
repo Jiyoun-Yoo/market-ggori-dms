@@ -1,5 +1,6 @@
 package com.ggori.dms.service.impl;
 
+import com.ggori.dms.dao.UserDao;
 import com.ggori.dms.domain.User;
 import com.ggori.dms.service.UserService;
 import java.util.List;
@@ -7,15 +8,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DefaultUserService implements UserService {
-//  UserDao userDao;
-//
-//  public DefaultUserService(UserDao userDao) {
-//    this.userDao = userDao;
-//  }
+  UserDao userDao;
+
+  public DefaultUserService(UserDao userDao) {
+    this.userDao = userDao;
+  }
 
   @Override
-  public List<User> list(String keyword) throws Exception {
+  public User checkUserID(String id) throws Exception {
     return null;
+  }
+
+  @Override
+  public List<User> list() throws Exception {
+    return userDao.findAll();
   }
 
   @Override
@@ -29,18 +35,18 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public User getId(String name, String tel) throws Exception {
+  public User getUserId(String name, String tel) throws Exception {
     return null;
   }
 
   @Override
-  public User getPwd(String email, String name, String tel) throws Exception {
+  public User getUserPwd(String email, String name, String tel) throws Exception {
     return null;
   }
 
   @Override
   public int addUser(User user) throws Exception {
-    return 0;
+    return this.userDao.insertUser(user);
   }
 
   @Override
@@ -49,17 +55,17 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public int updatePwd(int userNo, String password) throws Exception {
+  public int updateUserPwd(int userNo, String password) throws Exception {
     return 0;
   }
 
   @Override
-  public int delete(int no) throws Exception {
+  public int deleteUser(int no) throws Exception {
     return 0;
   }
 
   @Override
-  public int undelete(int no) throws Exception {
+  public int undeleteUser(int no) throws Exception {
     return 0;
   }
 }

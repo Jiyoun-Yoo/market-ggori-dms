@@ -50,7 +50,7 @@ public class AdminController {
     List<User> userList;
 
     try {
-      userList = userService.list("");
+      userList = userService.list();
       modelAndView.addObject("userList", userList);
     } catch(Exception e) {
       LOGGER.error(e);

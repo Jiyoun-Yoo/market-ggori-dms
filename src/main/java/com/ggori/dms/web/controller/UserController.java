@@ -37,6 +37,11 @@ public class UserController {
   @PostMapping("join")
   public RedirectView join(Model model, @ModelAttribute("user") User user) {
     try {
+      if(userService.checkUserID(user.getUsr_id()) != null) {
+        model.addAttribute("errorMsg", "이미 사용중인 아이디입니다.");
+
+      }
+
       user.setCreatedDtm(dateUtil.getNow());
       userService.addUser(user);
     } catch(Exception e) {

@@ -11,33 +11,58 @@
 
 <th:block layout:fragment="script">
   <script>
-    jQuery( document ).ready( function( $ ) {
-    } );
+    jQuery(document).ready(function() {
+    });
 
-    document.querySelector("#joinForm").onsubmit = () => {
-      var name = document.querySelector("#name");
-      var svc_id = document.querySelector("#svc_id");
-      var usr_id = document.querySelector("#usr_id");
-      var email = document.querySelector("#email");
-      var usr_pwd = document.querySelector("#usr_pwd");
-      var confirm_pwd = document.querySelector("#confirm_pwd");
-      var tel= document.querySelector("#tel");
+    function checkInput() {
+      var name = $("#name").val();
+      var svc_id = $("#svc_id").val();
+      var usr_id = $("#usr_id").val();
+      var email = $("#email").val();
+      var usr_pwd = $("#usr_pwd").val();
+      var confirm_pwd = $("#confirm_pwd").val();
+      var tel = $("#tel").val();
 
-      if (usr_pwd.value != confirm_pwd.value) {
+      if (name.length < 1) {
+        alert("이름을 입력했는지 확인하세요.");
+        return;
+      }
+
+      if (svc_id.length < 1) {
+        alert("기업 아이디를 입력했는지 확인하세요.");
+        return;
+      }
+
+      if (usr_id.length < 1) {
+        alert("아이디를 입력했는지 확인하세요.");
+        return;
+      }
+
+      if (usr_pwd.length < 1 || confirm_pwd.length < 1){
+        alert("비밀번호를 입력했는지 확인하세요.");
+        return;
+      }
+
+      if (email.length < 1) {
+        alert("이메일을 입력했는지 확인하세요.");
+        return;
+      }
+
+      if (tel.length < 1){
+        alert("전화번호를 입력했는지 확인하세요.");
+        return;
+      }
+
+      if (usr_pwd != confirm_pwd) {
         alert("비밀번호가 일치하지 않습니다.");
-        return false;
+        return;
       }
 
-      if (name.value.length < 1 ||
-          svc_id.value.length < 1 ||
-          usr_id.value.length < 1 ||
-          email.value.length < 1 ||
-          usr_pwd.value.length < 1 ||
-          confirm_pwd.value.length < 1 ||
-          tel.value.length < 1) {
-        alert("모든 항목을 입력해야 회원 가입이 가능합니다.");
-        return false;
-      }
+      $('#joinForm').submit();
+    }
+
+    function checkID() {
+
     }
   </script>
 </th:block>
@@ -62,7 +87,7 @@
           <div class="mb-3 row">
             <label for="svc_id" class='form-label col-sm-2 col-form-label'>기업 아이디</label>
             <div class="col-sm-10">
-              <input id="svc_id" th:field="${user.svc_id}" type='text' class="form-control" placeholder="기업 ID">
+              <input id="svc_id" th:field="${user.svc_id}" type='text' class="form-control" placeholder="기업 ID" >
             </div>
           </div>
 
@@ -70,6 +95,11 @@
             <label for="usr_id" class='form-label col-sm-2 col-form-label'>로그인 아이디</label>
             <div class="col-sm-10">
               <input id="usr_id" th:field="${user.usr_id}" type='text' class="form-control" placeholder="로그인 ID">
+            </div>
+
+            <label for="usr_id" class='form-label col-sm-2 col-form-label'></label>
+            <div class="col-sm-3">
+              <button id="checkID" type="button" class="btn btn-primary btn-lg" onclick="checkID();">아이디 중복 확인</button>
             </div>
           </div>
 
@@ -107,15 +137,12 @@
         <input style="display: none;" type='text' class="form-control" name='block_yn' value="n">
 
         <div style="margin-top:10px; margin-bottom: 10px;">
-          <button id="btn_join" type="submit" class="btn btn-primary btn-lg">회원 가입</button>
+          <button id="btn_join" type="button" class="btn btn-primary btn-lg" onclick="checkInput();">회원 가입</button>
           <a href="/user/join" class="btn btn-secondary btn-lg">취소</a>
         </div>
       </div>
     </form>
   </div>
 
-  <div id="afterJoining">
-    <p style="font-size: 20px; font-weight: bold;">회원 가입이 완료되었습니다.</p>
-  </div>
 </div>
 </html>

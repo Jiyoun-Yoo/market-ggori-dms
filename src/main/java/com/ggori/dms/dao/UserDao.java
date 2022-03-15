@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 public interface UserDao {
-  List<User> findByName(String name) throws Exception;
-  List<User> findAll(String keyword) throws Exception;
+  List<String> findByName(String name) throws Exception;
+  List<User> findAll() throws Exception;
+  List<User> checkId() throws Exception;
+//  List<User> findAll(String keyword) throws Exception;
   List<User> findAllAdmin(Map<String, Object> map) throws Exception;
-  int insert(User user) throws Exception;
-  int update(User user) throws Exception;
+  int insertUser(User user) throws Exception;
+  int updateUser(User user) throws Exception;
   int updatePwd(Map<String, Object> map) throws Exception;
   int delete(int no) throws Exception;
   int inactive(int no) throws Exception;

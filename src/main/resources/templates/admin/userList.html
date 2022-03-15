@@ -24,15 +24,18 @@
         <th scope="col">이름</th>
         <th scope="col">아이디</th>
         <th scope="col">등록일</th>
+        <th scope="col">관리자 여부</th>
+        <th scope="col">사용 여부</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="user : ${userList}">
-        <th scope="row">1</th>
+        <th scope="row" th:text="${user.usr_no}">no</th>
         <td th:text="${user.name}">name</td>
-        <td th:text="${user.usr_id}">stat</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td th:text="${user.usr_id}">usr_id</td>
+        <td th:text="${user.createdDtm}">createdDtm</td>
+        <td th:text="${user.admin_yn}">admin_yn</td>
+        <td th:text="${user.use_yn}">admin_yn</td>
       </tr>
       </tbody>
     </table>

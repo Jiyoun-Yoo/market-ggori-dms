@@ -7,13 +7,13 @@
   <resultMap type="user"                    id="UserMap">
     <id column="usr_no"		            property="usr_no" />
     <result column="svc_id" 	      	property="svc_id" />
-    <result column="user_id"      	  	property="usr_id" />
+    <result column="usr_id"      	  	property="usr_id" />
     <result column="name" 		        property="name" />
     <result column="email" 		        property="email" />
     <result column="hashpwd" 	  	    property="usr_pwd" />
     <result column="tel"              property="tel" />
-    <result column="rgs_dtm" 		      property="createdDate" />
-    <result column="last_vst_dtm" 		property="recentVisitDate" />
+    <result column="rgs_dtm" 		      property="createdDtm" />
+    <result column="last_vst_dtm" 		property="recentVisitDtm" />
     <result column="admin_yn"       	property="admin_yn" />
     <result column="use_yn"  	        property="use_yn" />
     <result column="block_yn"        	property="block_yn" />
@@ -41,8 +41,8 @@
   </sql>
 
   <insert id="insertUser" parameterType="map">
-    insert into user(name, user_id)
-            values(#{name}, #{user_id})
+    insert into user(name, usr_id)
+            values(#{name}, #{usr_id})
   </insert>
 
 <!--  <insert id="insertUser" parameterType="string">-->
@@ -50,9 +50,15 @@
 <!--            values(#{svc_id}, #{usr_id}, #{name}, #{email}, password(#{usr_pwd}), #{tel}, now(), now())-->
 <!--  </insert>-->
 
-  <select id="findAllUsers" resultMap="UserMap" parameterType="map">
+  <select id="findAll" resultMap="UserMap" parameterType="map">
     select *
     from user
+  </select>
+
+  <select id="checkId" resultMap="UserMap" parameterType="map">
+    select *
+    from user
+    where usr_id = #{usr_id}
   </select>
 <!--  <select id="findAllUsers" resultMap="UserMap" parameterType="map">-->
 <!--    <include refid="sql1" />-->
@@ -64,11 +70,6 @@
 <!--    </if>-->
 <!--    order by uno usr_no desc-->
 <!--  </select>-->
-
-  <select id="findByName" resultMap="string" parameterType="string">
-    select *
-    from user
-  </select>
 
   <select id="findAllAdmins" resultMap="UserMap" parameterType="map">
     <include refid="sql1" />

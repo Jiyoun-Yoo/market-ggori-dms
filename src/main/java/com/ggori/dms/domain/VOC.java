@@ -8,8 +8,8 @@ public class VOC {
   private User writer;
   private User admin_usr; //마켓꼬리 관리자
   private String detail;
-  private Date createdDate;
-  private Date updatedDate;
+  private String createdDtm;
+  private String updatedDtm;
   private String state; //처리 상태(P: 진행중, Y: 완료. Z: 취소)
   private String penalty_yn; //패널티 여부
   private User penalty_usr; //패널티 수여자
@@ -61,21 +61,21 @@ public class VOC {
     return this;
   }
 
-  public Date getCreatedDate() {
-    return createdDate;
+  public String getCreatedDtm() {
+    return createdDtm;
   }
 
-  public VOC setCreatedDate(Date createdDate) {
-    this.createdDate = createdDate;
+  public VOC setCreatedDtm(String createdDtm) {
+    this.createdDtm = createdDtm;
     return this;
   }
 
-  public Date getUpdatedDate() {
-    return updatedDate;
+  public String getUpdatedDtm() {
+    return updatedDtm;
   }
 
-  public VOC setUpdatedDate(Date updatedDate) {
-    this.updatedDate = updatedDate;
+  public VOC setUpdatedDtm(String updatedDtm) {
+    this.updatedDtm = updatedDtm;
     return this;
   }
 

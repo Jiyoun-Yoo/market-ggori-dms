@@ -8,7 +8,7 @@
   <resultMap type="user"                   id="DeliveryMap">
     <id column="delvry_no"		        property="delivery_no" />
     <result column="usr_no" 	 	      property="usr_no" />
-    <result column="rgs_dtm" 		      property="createdDate" />
+    <result column="rgs_dtm" 		      property="createdDtm" />
     <result column="from_where" 		  property="departure" />
     <result column="to_where"         property="destination" />
     <result column="reqsted_date" 	  property="requestedDate" />
