@@ -3,6 +3,8 @@ package com.ggori.dms.web.controller;
 import com.ggori.dms.domain.User;
 import com.ggori.dms.service.UserService;
 import com.ggori.dms.util.DateUtil;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -37,11 +42,6 @@ public class UserController {
   @PostMapping("join")
   public RedirectView join(Model model, @ModelAttribute("user") User user) {
     try {
-      if(userService.checkUserID(user.getUsr_id()) != null) {
-        model.addAttribute("errorMsg", "이미 사용중인 아이디입니다.");
-
-      }
-
       user.setCreatedDtm(dateUtil.getNow());
       userService.addUser(user);
     } catch(Exception e) {
@@ -50,6 +50,23 @@ public class UserController {
 
     model.addAttribute("msg", "회원 가입이 완료되었습니다.");
     return new RedirectView("/login");
+  }
+
+  @PostMapping("checkID")
+  @ResponseBody
+  public Map<Object, Object> checkID(@RequestBody String usr_id) {
+    int count = 0;
+    Map<Object, Object> map = new HashMap<>();
+
+    try {
+      count = userService.checkUserID(usr_id);
+      map.put("count", count);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return map;
   }
 
   @GetMapping("login")

@@ -15,8 +15,8 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public User checkUserID(String id) throws Exception {
-    return null;
+  public int checkUserID(String id) throws Exception {
+    return userDao.checkId();
   }
 
   @Override

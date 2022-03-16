@@ -56,7 +56,7 @@
   </select>
 
   <select id="checkId" resultMap="UserMap" parameterType="map">
-    select *
+    select count(*)
     from user
     where usr_id = #{usr_id}
   </select>
