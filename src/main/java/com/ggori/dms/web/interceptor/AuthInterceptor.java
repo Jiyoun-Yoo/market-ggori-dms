@@ -12,12 +12,12 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 @Component
-public class AdminInterceptor implements HandlerInterceptor {
+public class AuthInterceptor implements HandlerInterceptor {
 
-  private static final Logger LOGGER = LogManager.getLogger(AdminInterceptor.class);
+  private static final Logger LOGGER = LogManager.getLogger(AuthInterceptor.class);
 
-  public List admin_necessary
-      = Arrays.asList("/admin/**", "/delivery/new", "/penalty/new");
+  public List auth_unnecessary
+      = Arrays.asList("/main", "/join", "/login" ,"/common/ask", "/error", "/errorMsg");
 
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -25,10 +25,16 @@ public class AdminInterceptor implements HandlerInterceptor {
 
     User loginUser = (User) request.getSession().getAttribute("loginUser");
 
-    if(loginUser == null || !loginUser.getAdmin_yn().equalsIgnoreCase("y")) {
-      (request.getSession()).setAttribute("errorMsg", "접근 권한이 없는 페이지입니다.");
-      response.sendRedirect(request.getServletContext().getContextPath() + "/errorMsg");
-      return false;
+    if (loginUser != null) {
+      if (loginUser.getBlock_yn().equalsIgnoreCase("y")) {
+        (request.getSession()).setAttribute("errorMsg", "접근이 차단된 계정으로 로그인하셨습니다.");
+        response.sendRedirect(request.getServletContext().getContextPath() + "/errorMsg");
+        return false;
+      } else if (loginUser.getUse_yn().equalsIgnoreCase("n")) {
+        (request.getSession()).setAttribute("errorMsg", "사용이 중지된 계정으로 로그인하셨습니다.");
+        response.sendRedirect(request.getServletContext().getContextPath() + "/errorMsg");
+        return false;
+      }
     }
 
     return true;

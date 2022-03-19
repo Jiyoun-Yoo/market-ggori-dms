@@ -32,14 +32,6 @@ public class LoginInterceptor implements HandlerInterceptor {
       (request.getSession()).setAttribute("errorMsg", "로그인 회원만 접근 가능한 페이지입니다.");
       response.sendRedirect(request.getServletContext().getContextPath() + "/login");
       return false;
-    } else if(loginUser.getBlock_yn().equalsIgnoreCase("y")) {
-      (request.getSession()).setAttribute("errorMsg", "접근이 차단된 계정으로 로그인하셨습니다.");
-      response.sendRedirect(request.getServletContext().getContextPath() + "/errorMsg");
-      return false;
-    } else if (loginUser.getUse_yn().equalsIgnoreCase("n")) {
-      (request.getSession()).setAttribute("errorMsg", "사용이 중지된 계정으로 로그인하셨습니다.");
-      response.sendRedirect(request.getServletContext().getContextPath() + "/errorMsg");
-      return false;
     }
 
     return true;
@@ -48,6 +40,6 @@ public class LoginInterceptor implements HandlerInterceptor {
   @Override
   public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
       ModelAndView modelAndView) throws Exception {
-    (request.getSession()).setAttribute("msg", "");
+    (request.getSession()).setAttribute("errorMsg", "");
   }
 }
