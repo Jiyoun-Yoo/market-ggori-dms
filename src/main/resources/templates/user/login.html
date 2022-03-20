@@ -20,22 +20,23 @@
   <div id="user_login">
     <form id="loginForm" th:action="@{login}" method='post'>
       <div style="text-align: center; padding: 100px 0px;">
-        <p style="font-size: 20px; font-weight: bold;">
-          마켓 꼬리 배송관리 시스템 로그인</p>
+        <p class="title">마켓 꼬리 배송관리 시스템 로그인</p>
 
-        <div class="w-50 center">
-          <input id="inputID" type="text" class="form-control" name='usr_id' placeholder="ID">
-          <input id="inputPassword" type="password" class="form-control" name='usr_pwd' placeholder="Password">
+        <div class="w-25 center">
+          <div class="mb-3 row center">
+            <input id="inputID" type="text" class="form-control" name='usr_id' placeholder="ID">
+            <input id="inputPassword" type="password" class="form-control" name='usr_pwd' placeholder="Password">
+          </div>
+          <div style="margin-top:20px;">
+            <button type="submit" class="btn btn-dark btn-lg">로그인</button>
+          </div>
         </div>
 
-<!--        <div class="center" style="margin-top:10px; margin-bottom: 10px;">-->
-<!--          <input class="form-check-input" type="checkbox" name='saveId' id="defaultCheck1">-->
-<!--          <label class="form-check-label" for="defaultCheck1">아이디 저장</label>-->
+        <!--        <div class="center" style="margin-top:10px; margin-bottom: 10px;">-->
+        <!--          <input class="form-check-input" type="checkbox" name='saveId' id="defaultCheck1">-->
+        <!--          <label class="form-check-label" for="defaultCheck1">아이디 저장</label>-->
+
 <!--        </div>-->
-
-        <div style="margin-top:20px;">
-          <button type="submit" class="btn btn-dark btn-lg">로그인</button>
-        </div>
 
         <br>
 

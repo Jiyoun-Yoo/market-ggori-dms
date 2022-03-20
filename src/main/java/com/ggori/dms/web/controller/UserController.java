@@ -5,6 +5,7 @@ import com.ggori.dms.service.UserService;
 import com.ggori.dms.util.DateUtil;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -55,15 +56,59 @@ public class UserController {
   @PostMapping("checkID")
   @ResponseBody
   public Map<Object, Object> checkID(@RequestBody String usr_id) {
-    int count = 0;
     Map<Object, Object> map = new HashMap<>();
 
+    if (usr_id == null || usr_id.equals("")) {
+      map.put("result", false);
+      map.put("errorMsg", "아이디를 입력하지 않았습니다.");
+      return map;
+    }
+
+    int count = 0;
     try {
       count = userService.checkUserID(usr_id);
-      map.put("count", count);
+
+      if (count > 0) {
+        map.put("result", false);
+        map.put("errorMsg", "입력하신 아이디는 이미 사용중입니다.");
+        return map;
+      }
+
+      map.put("result", true);
 
     } catch (Exception e) {
       e.printStackTrace();
+    }
+
+    return map;
+  }
+
+  @PostMapping("checkPW")
+  @ResponseBody
+  public Map<Object, Object> checkPW(@RequestParam Map<String, Object> paramMap) {
+    Map<Object, Object> map = new HashMap<>();
+
+    String usr_pwd = (String) paramMap.get("usr_pwd");
+    String confirm_pwd = (String) paramMap.get("confirm_pwd");
+
+    String userpassRegex = "^[a-zA-Z0-9!@#$%^&*()?_~]{8,20}$";
+    boolean flag1 = Pattern.matches(userpassRegex, usr_pwd);
+
+    boolean flag2 = true;
+    if (!usr_pwd.equals(confirm_pwd)) {
+      flag2 = false;
+    }
+
+    if (flag1 == false) {
+      map.put("result", false);
+      map.put("errorMsg", "비밀번호는 숫자, 문자, 특수문자(!@#$%^&*()?_~)로 이루어진 8 ~ 20자리의 문자열이어야 합니다.");
+    } else if (flag2 == false) {
+
+      map.put("result", false);
+      map.put("errorMsg", "두 비밀번호가 일치하지 않습니다.");
+    } else {
+
+      map.put("result", true);
     }
 
     return map;
@@ -104,7 +149,7 @@ public class UserController {
     User usr_blocked = new User("jiyounyoo","jiyoun_blocked" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
     User usr_notInUse = new User("jiyounyoo","jiyoun_notInUse" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
 
-    User user = usr_notInUse;
+    User user = usr_admin;
 
 //    try {
 //      user = userService.getUser(usr_id, usr_pwd);
