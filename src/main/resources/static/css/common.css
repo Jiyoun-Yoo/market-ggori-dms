@@ -57,12 +57,14 @@ footer {
 }
 
 .container {
-
+  padding: 70px 0px;
+  font-size: 15px;
+  text-align: center;
 }
 
 /* a tag 밑줄 없애기 */
 a:link { color: white; text-decoration: none;}
-a:visited { color: white; text-decoration: none;}
+a:visited { color: white; text-decoration: none;}a
 a:hover { color: lightgrey; text-decoration: none;}
 
 /* 테이블 관련 스타일 */

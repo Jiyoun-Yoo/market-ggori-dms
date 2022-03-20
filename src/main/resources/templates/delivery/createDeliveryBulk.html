@@ -18,16 +18,27 @@
 <div layout:fragment="content">
   <div id="user">
     <form id="joinForm" th:action="@{new}" method='post'>
-      <div style="text-align: center; padding: 50px 0px;">
-        <p style="font-size: 20px; font-weight: bold;">
-          Market Ggori DMS - 신규 배송 등록</p>
+      <div class="container">
+        <p class="title">신규 배송 등록</p>
+
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <label for="departure" class="col-form-label">출발지</label>
+          </div>
+          <div class="col-auto">
+            <input id="departure" th:field="${delivery.departure}" type='text' class="form-control" placeholder="출발지 정보를 입력하세요.">
+          </div>
+          </div>
+        </div>
 
         <div class="w-50 center" style="font-size: 12px;">
 
+
+
           <div class="mb-3 row">
-            <label for="departure" class='form-label col-sm-2 col-form-label'>출발지</label>
+<!--            <label for="departure" class='form-label col-sm-2 col-form-label'>출발지</label>-->
             <div class="col-sm-10">
-              <input id="departure" th:field="${delivery.departure}" type='text' class="form-control" placeholder="출발지 정보를 입력하세요.">
+<!--              <input id="departure" th:field="${delivery.departure}" type='text' class="form-control" placeholder="출발지 정보를 입력하세요.">-->
             </div>
           </div>
 
