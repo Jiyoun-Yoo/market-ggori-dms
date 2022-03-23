@@ -17,7 +17,7 @@ public class LoginInterceptor implements HandlerInterceptor {
   private static final Logger LOGGER = LogManager.getLogger(LoginInterceptor.class);
 
   public List login_necessary
-      = Arrays.asList("/user/mypage", "/delivery/**" ,"/vox/**", "/penalty/**");
+      = Arrays.asList("/user/main", "/user/mypage", "/delivery/**" ,"/vox/**", "/penalty/**");
 
   public List login_unnecessary
       = Arrays.asList("/main", "/join", "/login" ,"/common/ask", "/error", "/errorMsg");

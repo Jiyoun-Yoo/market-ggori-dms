@@ -55,12 +55,17 @@ public class UserController {
 
   @PostMapping("checkID")
   @ResponseBody
-  public Map<Object, Object> checkID(@RequestBody String usr_id) {
+  public Map<Object, Object> checkID(@RequestParam Map<String, Object> paramMap) {
     Map<Object, Object> map = new HashMap<>();
 
-    if (usr_id == null || usr_id.equals("")) {
+    String usr_id = (String) paramMap.get("usr_id");
+
+    String userIDRegex = "^[a-zA-Z0-9]{8,20}$";
+    boolean flag1 = Pattern.matches(userIDRegex, usr_id);
+
+    if (flag1 == false) {
       map.put("result", false);
-      map.put("errorMsg", "아이디를 입력하지 않았습니다.");
+      map.put("errorMsg", "아이디는 숫자, 문자(영문)로 이루어진 8 ~ 20자리의 문자열이어야 합니다.");
       return map;
     }
 
