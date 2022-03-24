@@ -3,14 +3,16 @@ package com.ggori.dms.web.controller;
 import com.ggori.dms.domain.User;
 import com.ggori.dms.service.UserService;
 import com.ggori.dms.util.DateUtil;
+import groovy.util.logging.Slf4j;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +26,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+@Slf4j
 public class UserController {
 
-  private static final Logger LOGGER = LogManager.getLogger(UserController.class);
+  private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
   @Autowired UserService userService;
 
@@ -69,11 +72,10 @@ public class UserController {
       return map;
     }
 
-    int count = 0;
     try {
-      count = userService.checkUserID(usr_id);
+      User user =  userService.checkUserID(usr_id);
 
-      if (count > 0) {
+      if (user != null) {
         map.put("result", false);
         map.put("errorMsg", "입력하신 아이디는 이미 사용중입니다.");
         return map;
@@ -142,7 +144,7 @@ public class UserController {
 //
 //    if (saveId != null) {
 //      id_cookie.setMaxAge(60 * 60 * 24 * 7);
-//      LOGGER.info("##### " + usr_id + "쿠키에 아이디 저장");
+//      log.info("##### " + usr_id + "쿠키에 아이디 저장");
 //    } else {
 //      id_cookie.setMaxAge(0);
 //    }
@@ -165,8 +167,6 @@ public class UserController {
     user.setRecentVisitDtm(dateUtil.getNow());
     session.setAttribute("login_user", user);
 
-    LOGGER.info(user);
-
     if(user == null) {
       session.setAttribute("msg", "아이디와 비밀번호가 일치하지 않습니다. <br> 입력하신 정보가 정확한지 확인하시길 바랍니다.");
       return new RedirectView("/errorMsg");
@@ -176,10 +176,10 @@ public class UserController {
     session.setAttribute("msg", usr_id + " 로그인 성공");
 
     if (user.getAdmin_yn().equalsIgnoreCase("y")) {
-      LOGGER.info("#####  " + usr_id + "관리자 usr_id =" + usr_id + " 로그인 완료");
+      log.info("#####  " + usr_id + "관리자 usr_id =" + usr_id + " 로그인 완료");
 //      return new RedirectView("/admin/main");
     } else {
-      LOGGER.info("#####  " + usr_id + "일반 회원 usr_id =" + usr_id +  " 로그인 완료");
+      log.info("#####  " + usr_id + "일반 회원 usr_id =" + usr_id +  " 로그인 완료");
     }
 
     return new RedirectView("/main");
@@ -192,8 +192,7 @@ public class UserController {
 
   @GetMapping("user/mypage")
   public String detail() throws Exception {
-    LOGGER.info(userService.getUserByName("유지연")
-);
+    log.info(userService.getUserByName("유지연").toString());
 
     return "user/detail";
   }

@@ -5,9 +5,10 @@ import com.ggori.dms.domain.User;
 import com.ggori.dms.service.DeliveryService;
 import com.ggori.dms.service.UserService;
 import com.ggori.dms.util.DateUtil;
+import groovy.util.logging.Slf4j;
 import javax.servlet.http.HttpSession;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,10 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+@Slf4j
 @RequestMapping("delivery")
 public class DeliveryController {
-
-  private static final Logger LOGGER = LogManager.getLogger(DeliveryController.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(DeliveryController.class);
 
   @Autowired DeliveryService deliveryService;
   @Autowired UserService userService;

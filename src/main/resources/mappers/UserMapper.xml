@@ -55,8 +55,8 @@
     from user
   </select>
 
-  <select id="checkId" resultMap="UserMap" parameterType="map">
-    select count(*)
+  <select id="checkId" resultType="User"  parameterType="string">
+    select *
     from user
     where usr_id = #{usr_id}
   </select>

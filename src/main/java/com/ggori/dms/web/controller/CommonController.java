@@ -1,9 +1,10 @@
 package com.ggori.dms.web.controller;
 
 import com.ggori.dms.domain.User;
+import groovy.util.logging.Slf4j;
 import javax.servlet.http.HttpSession;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+@Slf4j
 public class CommonController {
 
-  private static final Logger LOGGER = LogManager.getLogger(CommonController.class);
+  private static final Logger log = LoggerFactory.getLogger(CommonController.class);
 
   @GetMapping("main")
   public RedirectView main(Model model, HttpSession session) {
@@ -40,7 +42,6 @@ public class CommonController {
 
   @GetMapping("errorMsg")
   public String error(Model model, HttpSession session) {
-    LOGGER.info(session.getAttribute("errorMsg"));
     model.addAttribute("errorMsg", session.getAttribute("errorMsg"));
     return "/errorMsg";
   }

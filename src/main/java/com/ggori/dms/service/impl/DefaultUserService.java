@@ -15,13 +15,13 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public int checkUserID(String id) throws Exception {
-    return userDao.checkId();
+  public User checkUserID(String usr_id) throws Exception {
+     return userDao.checkId(usr_id);
   }
 
   @Override
   public List<User> list() throws Exception {
-    return userDao.findAll();
+    return userDao.findAll(null);
   }
 
   @Override

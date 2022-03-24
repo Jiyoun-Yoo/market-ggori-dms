@@ -1,7 +1,8 @@
 package com.ggori.dms.web.controller;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import groovy.util.logging.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+@Slf4j
 @RequestMapping("voc")
 public class VOCController {
 
-  private static final Logger LOGGER = LogManager.getLogger(VOCController.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(VOCController.class);
 
   @GetMapping("new")
   public String createVOC() {
