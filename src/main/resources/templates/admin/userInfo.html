@@ -10,13 +10,12 @@
 </th:block>
 
 <th:block layout:fragment="script">
-  <scr  <script th:src="@{/js/admin/userList.js}"></script>
-
+  <script th:src="@{/js/admin/userInfo.js}"></script>
 </th:block>
 
 <div layout:fragment="content">
 <div class="container">
-  <p class="title">회원 목록</p>
+  <p class="title">회원 상세 정보</p>
     <table>
       <thead>
       <tr>
@@ -26,19 +25,16 @@
         <th scope="col">등록일</th>
         <th scope="col">관리자 여부</th>
         <th scope="col">사용 여부</th>
-        <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
-      <tr th:each="user : ${userList}">
+      <tr>
         <th scope="row" th:text="${user.usr_no}">no</th>
-        <td id="name" th:text="${user.name}">name</td>
+        <td th:text="${user.name}">name</td>
         <td th:text="${user.usr_id}">usr_id</td>
         <td th:text="${user.createdDtm}">createdDtm</td>
         <td th:text="${user.admin_yn}">admin_yn</td>
-        <td th:text="${user.use_yn}">use_yn</td>
-<!--        <td><a th:href="/admin/userInfo/${user.usr_no}">상세</a></td>-->
-        <td><a th:href="@{/admin/userInfo/{usr_no}(usr_no=${user.usr_no})}">상세</a></td>
+        <td th:text="${user.use_yn}">admin_yn</td>
       </tr>
       </tbody>
     </table>

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,13 +49,28 @@ public class AdminController {
 
   @GetMapping("userList")
   public ModelAndView userList(Model model) {
-
     ModelAndView modelAndView = new ModelAndView("admin/userList");
     List<User> userList;
 
     try {
       userList = userService.list();
       modelAndView.addObject("userList", userList);
+    } catch(Exception e) {
+      log.error(e.toString());
+    }
+
+    return modelAndView;
+  }
+
+  @GetMapping("userInfo/{usr_no}")
+  public ModelAndView userDetail(@PathVariable int usr_no) {
+    ModelAndView modelAndView = new ModelAndView("admin/userInfo");
+
+    try {
+      User user = userService.getUserByUsrNo(usr_no);
+      log.info(user.toString());
+      modelAndView.addObject("user", user);
+
     } catch(Exception e) {
       log.error(e.toString());
     }

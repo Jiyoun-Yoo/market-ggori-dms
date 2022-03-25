@@ -60,6 +60,13 @@
     from user
     where usr_id = #{usr_id}
   </select>
+
+  <select id="findUserByUsrNo" resultType="User"  parameterType="int">
+    select *
+    from user
+    where usr_no = #{usr_no}
+  </select>
+
 <!--  <select id="findAllUsers" resultMap="UserMap" parameterType="map">-->
 <!--    <include refid="sql1" />-->
 <!--    <if test="keyword != null">-->
