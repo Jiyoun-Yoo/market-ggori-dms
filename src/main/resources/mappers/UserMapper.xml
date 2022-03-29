@@ -55,6 +55,7 @@
     from user
   </select>
 
+
   <select id="checkId" resultType="User"  parameterType="string">
     select *
     from user
@@ -67,6 +68,11 @@
     where usr_no = #{usr_no}
   </select>
 
+  <select id="findUserByName" resultMap="UserMap" parameterType="string">
+    select *
+    from user
+    where name = #{name}
+  </select>
 <!--  <select id="findAllUsers" resultMap="UserMap" parameterType="map">-->
 <!--    <include refid="sql1" />-->
 <!--    <if test="keyword != null">-->

@@ -1,0 +1,43 @@
+<div id="modal">
+<form id="askForm" th:action="@{ask}" method='post'>
+  <div class="container">
+    <p class="title"></p>
+
+<!--      <div class="w-50 center">-->
+<!--        <input id="inputContent" type="text" class="form-control" name='inputContent'-->
+<!--               height="300" width="500" placeholder="문의하실 내용을 입력하세요.">-->
+<!--      </div>-->
+
+    <div class="center" style="padding: 10px 0px;">
+      <textarea id="inputContent" class="" cols="130" rows="15"
+                placeholder="문의하실 내용을 입력하세요."></textarea>
+    </div>
+
+    <div class="row g-2 w-50 center">
+      <div class="col-md">
+        <div class="form-floating">
+          <select class="form-select" id="contactWay" aria-label="Floating label select example">
+            <option selected>답변 희망 방법</option>
+            <option value='phone'>전화</option>
+            <option value='email'>이메일</option>
+          </select>
+          <label for="contactWay">Works with selects</label>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="inputContact" placeholder="전화번호 or 이메일 주소">
+          <label for="inputContact">inputContact</label>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px; margin-bottom: 10px; padding: 10px 0px;">
+      <button type="submit" class="btn btn-primary btn-lg">등록</button>
+      <a href="main" class="btn btn-secondary btn-lg">취소</a>
+    </div>
+
+    <br>
+  </div>
+</form>
+</div>

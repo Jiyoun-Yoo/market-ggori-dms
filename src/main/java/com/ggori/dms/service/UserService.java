@@ -7,7 +7,7 @@ public interface UserService {
   List<User> list() throws Exception;
   User checkUserID(String id) throws Exception;
   User getUser(String id, String password) throws Exception;
-  User getUserByName(String name) throws Exception;
+  List<User> getUserByName(String name) throws Exception;
   User getUserByUsrNo(int no) throws Exception;
   User getUserId(String name, String tel) throws Exception;
   User getUserPwd(String email, String name, String tel) throws Exception;

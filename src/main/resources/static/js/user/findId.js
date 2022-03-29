@@ -1,5 +1,4 @@
-jQuery(document).ready(function() {
-
+$(function(){
 });
 
 let id_flag = false;

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("voc")
 public class VOCController {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(VOCController.class);
+  private static final Logger log = LoggerFactory.getLogger(VOCController.class);
 
   @GetMapping("new")
   public String createVOC() {

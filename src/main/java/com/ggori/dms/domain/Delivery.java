@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Delivery {
   private int delivery_no;
-  private User writer; //등록자
   private User admin_usr; //관리 담당자
   private String requestedCompany; //요청업체
   private User driver_usr; //배송 담당자
@@ -14,7 +13,7 @@ public class Delivery {
   private String destination; //도착지
   private String createdDtm; //배송 요청 발생일
   private String requestedDateTime; //배송 요청일
-  private Date completedDtm; //배송일
+  private Date completedDtm; //배송 완료일
   private String state; //진행 상태(D: 예정, P: 진행중, Y: 완료, Z:취소, D: 보류)
   private String detail;
   private String admin_memo;
@@ -22,19 +21,24 @@ public class Delivery {
   public Delivery() {
   }
 
-  public Delivery(int no, User writer, User admin_usr,
-      User penalty_usr, String departure, String destination, Date startDate, String state,
-      String detail, String admin_comment) {
-    this.delivery_no = no;
-    this.writer = writer;
+  public Delivery(int delivery_no, User admin_usr, String requestedCompany,
+      User driver_usr, String driver_check_yn, String product, String departure,
+      String destination, String createdDtm, String requestedDateTime, Date completedDtm,
+      String state, String detail, String admin_memo) {
+    this.delivery_no = delivery_no;
     this.admin_usr = admin_usr;
-    this.driver_usr = penalty_usr;
+    this.requestedCompany = requestedCompany;
+    this.driver_usr = driver_usr;
+    this.driver_check_yn = driver_check_yn;
+    this.product = product;
     this.departure = departure;
     this.destination = destination;
-    this.completedDtm = startDate;
+    this.createdDtm = createdDtm;
+    this.requestedDateTime = requestedDateTime;
+    this.completedDtm = completedDtm;
     this.state = state;
     this.detail = detail;
-    this.admin_memo = admin_comment;
+    this.admin_memo = admin_memo;
   }
 
   public int getDelivery_no() {
@@ -43,15 +47,6 @@ public class Delivery {
 
   public Delivery setDelivery_no(int delivery_no) {
     this.delivery_no = delivery_no;
-    return this;
-  }
-
-  public User getWriter() {
-    return writer;
-  }
-
-  public Delivery setWriter(User writer) {
-    this.writer = writer;
     return this;
   }
 
@@ -136,9 +131,8 @@ public class Delivery {
     return completedDtm;
   }
 
-  public Delivery setCompletedDtm(Date completedDtm) {
+  public void setCompletedDtm(Date completedDtm) {
     this.completedDtm = completedDtm;
-    return this;
   }
 
   public String getState() {
@@ -172,7 +166,6 @@ public class Delivery {
   public String toString() {
     return "Delivery{" +
         "delivery_no=" + delivery_no +
-        ", writer=" + writer +
         ", admin_usr=" + admin_usr +
         ", requestedCompany='" + requestedCompany + '\'' +
         ", driver_usr=" + driver_usr +
@@ -182,7 +175,7 @@ public class Delivery {
         ", destination='" + destination + '\'' +
         ", createdDtm='" + createdDtm + '\'' +
         ", requestedDateTime='" + requestedDateTime + '\'' +
-        ", completedDate=" + completedDtm +
+        ", completedDtm=" + completedDtm +
         ", state='" + state + '\'' +
         ", detail='" + detail + '\'' +
         ", admin_memo='" + admin_memo + '\'' +

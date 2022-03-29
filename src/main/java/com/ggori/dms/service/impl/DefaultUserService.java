@@ -35,8 +35,8 @@ public class DefaultUserService implements UserService {
   }
 
   @Override
-  public User getUserByName(String name) throws Exception {
-    return null;
+  public List<User> getUserByName(String name) throws Exception {
+    return userDao.findUserByName(name);
   }
 
   @Override

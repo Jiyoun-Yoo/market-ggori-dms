@@ -20,21 +20,26 @@
       <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">이름</th>
-        <th scope="col">아이디</th>
-        <th scope="col">등록일</th>
-        <th scope="col">관리자 여부</th>
-        <th scope="col">사용 여부</th>
+        <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
       <tr>
-        <th scope="row" th:text="${user.usr_no}">no</th>
+        <th>이름</th>
         <td th:text="${user.name}">name</td>
+      </tr>
+      <tr>
+        <th>로그인 아이디</th>
         <td th:text="${user.usr_id}">usr_id</td>
+      </tr>
+      <tr>
+        <th>가입 일자</th>
         <td th:text="${user.createdDtm}">createdDtm</td>
-        <td th:text="${user.admin_yn}">admin_yn</td>
-        <td th:text="${user.use_yn}">admin_yn</td>
+      </tr>
+      <tr>
+        <th>계정 상태</th>
+        <td th:if="${user.use_yn == 'Y'}">활성</td>
+        <td th:else>비활성</td>
       </tr>
       </tbody>
     </table>

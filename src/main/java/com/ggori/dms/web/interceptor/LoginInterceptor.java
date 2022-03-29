@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 
-  private static final Logger LOGGER = LogManager.getLogger(LoginInterceptor.class);
+  private static final Logger log = LogManager.getLogger(LoginInterceptor.class);
 
   public List login_necessary
       = Arrays.asList("/user/main", "/user/mypage", "/delivery/**" ,"/vox/**", "/penalty/**");

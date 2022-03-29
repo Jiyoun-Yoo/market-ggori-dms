@@ -6,34 +6,27 @@
 <mapper namespace="com.ggori.dms.dao.DeliveryDao">
 
   <resultMap type="user"                   id="DeliveryMap">
-    <id column="delvry_no"		        property="delivery_no" />
-    <result column="usr_no" 	 	      property="usr_no" />
+    <id column="delivery_no"		        property="delivery_no" />
     <result column="rgs_dtm" 		      property="createdDtm" />
     <result column="from_where" 		  property="departure" />
     <result column="to_where"         property="destination" />
-    <result column="reqsted_date" 	  property="requestedDate" />
-    <result column="compl_date" 	  	property="complatedcDate" />
-    <result column="driver_check_yn"  property="usr_id" />
+    <result column="reqstd_com" 	    property="requestedCompany" />
+    <result column="reqsted_dtm" 	    property="requestedDateTime" />
+    <result column="compl_dtm" 	  	  property="completedDate" />
+<!--    <result column="driver_check_yn"  property="usr_id" />-->
     <result column="detail"        	  property="detail" />
     <result column="state"  	        property="state" />
     <result column="admin_memo" 	 	  property="admin_memo" />
 
-    <association property="writer"              javaType="user">
-      <id column="writer_usr_no"		       property="usr_no" />
-      <result column="writer_usr_id"       property="usr_id" />
-      <result column="writer_name" 		     property="name" />
-      <result column="writer_admin_yn"     property="admin_yn" />
-    </association>
-
     <association property="admin_usr"           javaType="user">
-      <id column="admin_usr_no"		         property="usr_no" />
+      <id column="admin_no"		             property="usr_no" />
       <result column="admin_usr_id"      	 property="usr_id" />
       <result column="admin_name" 		     property="name" />
       <result column="admin_yn"       	   property="admin_yn" />
     </association>
 
     <association property="driver_usr"          javaType="user">
-      <id column="driver_usr_no"		       property="usr_no" />
+      <id column="driver_no"		           property="usr_no" />
       <result column="driver_usr_id"       property="usr_id" />
       <result column="driver_name" 		     property="name" />
       <result column="driver_tel"          property="tel" />
@@ -43,13 +36,13 @@
     </association>
   </resultMap>
 
-  <sql id="sql1">
-
-  </sql>
-
   <insert id="insertDelivery" parameterType="string">
-    insert into user(svc_id, usr_id, name, email, hashpwd, tel, rgs_dtm, last_vst_dtm)
-            values(#{svc_id}, #{usr_id}, #{name}, #{email}, password(#{usr_pwd}), #{tel}, now(), now())
+    insert into delivery(from_where, to_where, reqstd_com,
+                         driver_no, admin_no, detail,
+                         state, admin_memo, rgs_dtm)
+            values(#{departure}, #{destination}, #{requestedCompany}
+                   #{driver_usr.usr_no}, #{admin_usr.usr_no}, #{detail},
+                   #{state}, #{admin_memo}, now())
   </insert>
 
 

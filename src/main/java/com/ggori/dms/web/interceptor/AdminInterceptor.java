@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Component
 public class AdminInterceptor implements HandlerInterceptor {
 
-  private static final Logger LOGGER = LogManager.getLogger(AdminInterceptor.class);
+  private static final Logger log = LogManager.getLogger(AdminInterceptor.class);
 
   public List admin_necessary
       = Arrays.asList("/admin/**", "/delivery/new", "/penalty/new");

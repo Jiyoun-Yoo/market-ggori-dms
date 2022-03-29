@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
 
-  private static final Logger LOGGER = LogManager.getLogger(AuthInterceptor.class);
+  private static final Logger log = LogManager.getLogger(AuthInterceptor.class);
 
   public List auth_unnecessary
       = Arrays.asList("/main", "/join", "/login" ,"/common/ask", "/error", "/errorMsg");

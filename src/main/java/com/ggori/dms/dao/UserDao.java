@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface UserDao {
-  List<String> findByName(String name) throws Exception;
+  List<User> findUserByName(String name) throws Exception;
 //  List<User> findAll() throws Exception;
   User checkId(String usr_id) throws Exception;
   User findUserByUsrNo(int usr_no) throws Exception;
