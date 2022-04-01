@@ -16,8 +16,36 @@
 
 <div layout:fragment="content">
   <div class="container">
-    <p class="title">
-      Delivery Detail</p>
+    <p class="title">배송 상세</p>
+
+    <table>
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">출발지</th>
+        <th scope="col">도착지</th>
+        <th scope="col">요청업체</th>
+        <th scope="col">물품정보</th>
+        <th scope="col">운송담당</th>
+        <th scope="col">내부담당</th>
+        <th scope="col">운반일자</th>
+        <th scope="col">요청일자</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row" th:text="${delivery.delivery_no}">delivery_no</th>
+        <td th:text="${delivery.departure}">departure</td>
+        <td th:text="${delivery.destination}">destination</td>
+        <td th:text="${delivery.requestedCompany}">requestedCompany</td>
+        <td th:text="${delivery.product}">product</td>
+        <td th:text="${delivery.driver_usr.name}">driver_usr</td>
+        <td th:text="${delivery.admin_usr.name}">admin_usr</td>
+        <td th:text="${delivery.createdDtm}">createdDtm</td>
+      </tr>
+      </tbody>
+    </table>
+
   </div>
 </div>
 </html>

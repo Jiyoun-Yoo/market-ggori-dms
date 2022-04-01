@@ -5,7 +5,7 @@
 
 <mapper namespace="com.ggori.dms.dao.PenaltyDao">
 
-  <resultMap type="user"                    id="PenaltyMap">
+  <resultMap type="penalty"                    id="PenaltyMap">
     <id column="penalty_no"		            property="penalty_no" />
     <result column="writer_no" 	      property="penalty_usr_no" />
     <result column="rgs_dtm" 		      property="createdDtm" />

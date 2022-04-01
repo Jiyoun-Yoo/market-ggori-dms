@@ -1,5 +1,5 @@
 package com.ggori.dms.dao;
 
-public class PenaltyDao {
+public interface PenaltyDao {
 
 }

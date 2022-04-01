@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,30 +47,23 @@ public class DeliveryController {
 
   @PostMapping("new")
   public RedirectView createDevlivery(Model model, HttpSession session, @ModelAttribute("delivery") Delivery delivery) {
-
-    User user = (User) session.getAttribute("login_user");
-
-    delivery.setAdmin_usr(user);
+    delivery.setAdmin_usr((User) session.getAttribute("login_user"));
     delivery.setRequestedDateTime(delivery.getRequestedDateTime().replace(",", " "));
-    delivery.setState("D");
+    delivery.setCreatedDtm(dateUtil.getNow());
 
+    User driver;
     try {
-      //TODO driver, admin user 검색 방식 develop
-//      delivery.setDriver_usr(userService.getUserByName(delivery.getDriver_usr().getName()));
-//      delivery.setAdmin_usr(userService.getUserByName(delivery.getAdmin_usr().getName()));
-
-      delivery.setCreatedDtm(dateUtil.getNow());
-
-      log.info(delivery.toString());
+      driver = userService.getUserByName(delivery.getDriver_usr().getName()).get(0);
+      delivery.setDriver_usr(driver);
 
       deliveryService.addDelivery(delivery);
+
+      log.info("delivery_no :       " + delivery.getDelivery_no());
     } catch(Exception e) {
       e.printStackTrace();
     }
 
-    model.addAttribute("alertMSG", "배송 등록이 완료되었습니다.");
-
-    return new RedirectView("/delivery/detail" );
+    return new RedirectView("/delivery/" + delivery.getDelivery_no());
   }
 
   @PostMapping("checkDriver")
@@ -91,11 +85,9 @@ public class DeliveryController {
       } else if (userList.size() > 1) {
         map.put("result", "select");
         map.put("userList", userList);
-
       }
 
-//      map.put("result", "success");
-      map.put("result", "select");
+      map.put("result", "success");
       map.put("userList", userList);
 
     } catch(Exception e) {
@@ -107,12 +99,35 @@ public class DeliveryController {
 
 
   @GetMapping("list")
-  public String deliveryList() {
-    return "delivery/deliveryList";
+  public ModelAndView deliveryList() {
+    ModelAndView modelAndView = new ModelAndView("delivery/deliveryList");
+    List<Delivery> deliveryList;
+
+    try {
+      deliveryList = deliveryService.list();
+      log.info("########      " + deliveryList.toString());
+      modelAndView.addObject("deliveryList", deliveryList);
+
+    } catch (Exception e) {
+      log.error(e.getMessage());
+    }
+    return modelAndView;
   }
 
-  @GetMapping("detail")
-  public String readDelivery() {
-    return "delivery/readDelivery";
+  @GetMapping("{delivery_no}")
+  public ModelAndView readDelivery(@PathVariable int delivery_no) {
+    ModelAndView modelAndView = new ModelAndView("delivery/readDelivery");
+    try {
+      Delivery delivery = deliveryService.getDeliveryByNo(delivery_no);
+      modelAndView.addObject("delivery", delivery);
+
+    } catch(Exception e) {
+      log.error(e.getMessage());
+    }
+    return modelAndView;
   }
 }
+
+
+
+

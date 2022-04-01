@@ -5,7 +5,7 @@
 
 <mapper namespace="com.ggori.dms,dao.VOCDao">
 
-  <resultMap type="user"                    id="VOCMap">
+  <resultMap type="voc"                    id="VOCMap">
     <id column="voc_no"		            property="voc_no" />
     <result column="delivery_no" 	 	  property="delivery_no" />
     <result column="admin_usr_no" 	 	property="admin_usr_no" />

@@ -51,7 +51,7 @@ public class DefaultUserService implements UserService {
 
   @Override
   public int addUser(User user) throws Exception {
-    return this.userDao.insertUser(user);
+    return userDao.insertUser(user);
   }
 
   @Override

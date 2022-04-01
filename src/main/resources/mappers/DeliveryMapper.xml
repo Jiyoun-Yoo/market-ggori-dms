@@ -5,14 +5,15 @@
 
 <mapper namespace="com.ggori.dms.dao.DeliveryDao">
 
-  <resultMap type="user"                   id="DeliveryMap">
+  <resultMap type="delivery"                   id="DeliveryMap">
     <id column="delivery_no"		        property="delivery_no" />
     <result column="rgs_dtm" 		      property="createdDtm" />
     <result column="from_where" 		  property="departure" />
     <result column="to_where"         property="destination" />
     <result column="reqstd_com" 	    property="requestedCompany" />
     <result column="reqsted_dtm" 	    property="requestedDateTime" />
-    <result column="compl_dtm" 	  	  property="completedDate" />
+    <result column="compl_dtm" 	  	  property="completedDtm" />
+    <result column="product" 	  	    property="product" />
 <!--    <result column="driver_check_yn"  property="usr_id" />-->
     <result column="detail"        	  property="detail" />
     <result column="state"  	        property="state" />
@@ -36,14 +37,32 @@
     </association>
   </resultMap>
 
-  <insert id="insertDelivery" parameterType="string">
-    insert into delivery(from_where, to_where, reqstd_com,
-                         driver_no, admin_no, detail,
-                         state, admin_memo, rgs_dtm)
-            values(#{departure}, #{destination}, #{requestedCompany}
-                   #{driver_usr.usr_no}, #{admin_usr.usr_no}, #{detail},
-                   #{state}, #{admin_memo}, now())
+<!--  <insert id="insertDelivery" parameterType="map">-->
+<!--    insert into delivery(from_where, to_where, reqstd_com,-->
+<!--                         driver_no, admin_no, detail,-->
+<!--                         state, admin_memo, rgs_dtm)-->
+<!--            values(#{departure}, #{destination}, #{requestedCompany}-->
+<!--                   #{driver_usr.usr_no}, #{admin_usr.usr_no}, #{detail},-->
+<!--                   #{state}, #{admin_memo}, now())-->
+<!--  </insert>-->
+
+  <insert id="insertDelivery" parameterType="map" useGeneratedKeys="true" keyProperty="driver_no">
+    insert into delivery(from_where, to_where, reqstd_com, product, admin_no, driver_no)
+            values(#{departure}, #{destination}, #{requestedCompany}, #{product}, #{admin_usr.usr_no}, #{driver_usr.usr_no})
+    <selectKey keyProperty="delivery_no" resultType="Integer" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
   </insert>
 
+  <select id="findAllDelivery" resultMap="DeliveryMap" parameterType="map">
+    select *
+    from delivery
+  </select>
+
+  <select id="findByDeliveryNo" resultMap="DeliveryMap" parameterType="int">
+    select *
+    from delivery
+    where delivery_no = #{delivery_no};
+  </select>
 
 </mapper>

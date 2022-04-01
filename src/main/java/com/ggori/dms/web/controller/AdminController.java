@@ -20,12 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RequestMapping("admin")
 public class AdminController {
-
   private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 
   @Autowired
   UserService userService;
-
 
   @GetMapping("main")
   public String main(Model model) {
@@ -56,7 +54,7 @@ public class AdminController {
       userList = userService.list();
       modelAndView.addObject("userList", userList);
     } catch(Exception e) {
-      log.error(e.toString());
+      log.error(e.getMessage());
     }
 
     return modelAndView;
@@ -72,7 +70,7 @@ public class AdminController {
       modelAndView.addObject("user", user);
 
     } catch(Exception e) {
-      log.error(e.toString());
+      log.error(e.getMessage());
     }
 
     return modelAndView;

@@ -29,20 +29,18 @@
         <th scope="col">내부담당</th>
         <th scope="col">물품정보</th>
         <th scope="col">운반일자</th>
-        <th scope="col">상세</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td><a href="/delivery/detail">상세보기</a></td>
+      <tr th:each="delivery : ${deliveryList}">
+        <th scope="row" th:text="${delivery.delivery_no}">no</th>
+        <td th:text="${delivery.departure}">departure</td>
+        <td th:text="${delivery.destination}">destination</td>
+        <td th:text="${delivery.requestedCompany}">requestedCompany</td>
+        <td th:text="${delivery.driver_usr.name}">driver_usr</td>
+        <td th:text="${delivery.admin_usr.name}">admin_usr</td>
+        <td th:text="${delivery.requestedDateTime}">requestedDateTime</td>
+        <td><a th:href="@{/delivery/{delivery_no}(delivery_no=${delivery.delivery_no})}">상세</a></td>
       </tr>
       </tbody>
     </table>

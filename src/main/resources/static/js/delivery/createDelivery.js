@@ -1,8 +1,9 @@
 $(function(){
-  var modalToggle = document.getElementById('modal_selectDriver') // relatedTarget
-  myModal.show(modalToggle)
 
 });
+
+var check_driver = false;
+var driver_name;
 
  function checkInput() {
   if ($('#departure').val() == '' || $('#departure').val() == null) {
@@ -40,7 +41,12 @@ $(function(){
     return false;
   }
 
-  $('#devlieryForm').submit();
+  if(!check_driver || $("#driver_usr_name").val() != driver_name) {
+    alert("운송 담당자 정보를 확인하세요.");
+    return false;
+  }
+
+  $('#deliveryForm').submit();
 }
 
 function checkDriver() {
@@ -50,13 +56,10 @@ function checkDriver() {
     data: {driver_name:$("#driver_usr_name").val()},
     success: function (data) {
       if (data.result == "success") {
-        $("#modal_selectDriver").show();
+        driver_name = $("#driver_usr_name").val();
+        check_driver = true;
         alert("확인이 완료되었습니다.");
-
-      } else if (data.result == "select") {
-        $('#modal_selectDriver').on('show.bs.modal', function(event) {
-        });
-
+        return;
       }
 
       alert(data.errorMsg);

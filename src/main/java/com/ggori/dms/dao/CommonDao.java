@@ -1,5 +1,5 @@
 package com.ggori.dms.dao;
 
-public class CommonDao {
+public interface CommonDao {
 
 }

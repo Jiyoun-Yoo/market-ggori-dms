@@ -7,14 +7,13 @@ public class Delivery {
   private User admin_usr; //관리 담당자
   private String requestedCompany; //요청업체
   private User driver_usr; //배송 담당자
-  private String driver_check_yn; //배송 담당자 확인 여부
   private String product; //배송 물품
   private String departure; //출발지
   private String destination; //도착지
   private String createdDtm; //배송 요청 발생일
   private String requestedDateTime; //배송 요청일
   private Date completedDtm; //배송 완료일
-  private String state; //진행 상태(D: 예정, P: 진행중, Y: 완료, Z:취소, D: 보류)
+  private String state; //진행 상태(D: 예정, P: 진행중, Y: 완료, Z:취소)
   private String detail;
   private String admin_memo;
 
@@ -22,14 +21,13 @@ public class Delivery {
   }
 
   public Delivery(int delivery_no, User admin_usr, String requestedCompany,
-      User driver_usr, String driver_check_yn, String product, String departure,
+      User driver_usr, String product, String departure,
       String destination, String createdDtm, String requestedDateTime, Date completedDtm,
       String state, String detail, String admin_memo) {
     this.delivery_no = delivery_no;
     this.admin_usr = admin_usr;
     this.requestedCompany = requestedCompany;
     this.driver_usr = driver_usr;
-    this.driver_check_yn = driver_check_yn;
     this.product = product;
     this.departure = departure;
     this.destination = destination;
@@ -81,15 +79,6 @@ public class Delivery {
 
   public Delivery setDriver_usr(User driver_usr) {
     this.driver_usr = driver_usr;
-    return this;
-  }
-
-  public String getDriver_check_yn() {
-    return driver_check_yn;
-  }
-
-  public Delivery setDriver_check_yn(String driver_check_yn) {
-    this.driver_check_yn = driver_check_yn;
     return this;
   }
 
@@ -166,10 +155,9 @@ public class Delivery {
   public String toString() {
     return "Delivery{" +
         "delivery_no=" + delivery_no +
-        ", admin_usr=" + admin_usr +
+        ", admin_usr=" + admin_usr.getName() +
         ", requestedCompany='" + requestedCompany + '\'' +
-        ", driver_usr=" + driver_usr +
-        ", driver_check_yn='" + driver_check_yn + '\'' +
+        ", driver_usr=" + driver_usr.getName() +
         ", product='" + product + '\'' +
         ", departure='" + departure + '\'' +
         ", destination='" + destination + '\'' +
