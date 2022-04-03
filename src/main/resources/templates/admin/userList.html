@@ -32,8 +32,12 @@
       <tbody>
       <tr th:each="user : ${userList}">
         <th scope="row" th:text="${user.usr_no}">no</th>
-        <td id="name" th:text="${user.name}">name</td>
-        <td th:text="${user.usr_id}">usr_id</td>
+        <td>
+          <a th:href="@{/admin/userInfo/{usr_no}(usr_no=${user.usr_no})}" th:text="${user.name}" target="_blank" />
+        </td>
+        <td>
+          <a th:href="@{/admin/userInfo/{usr_no}(usr_no=${user.usr_no})}" th:text="${user.usr_id}" target="_blank" />
+        </td>
         <td th:text="${user.createdDtm}">createdDtm</td>
         <td th:text="${user.admin_yn}">admin_yn</td>
         <td th:text="${user.use_yn}">use_yn</td>

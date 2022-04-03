@@ -100,8 +100,10 @@ th, td {
   text-align: center;
 }
 
-.modal {
-
-  background-color:#FFFF;
-
+/* 인풋 관련 스타일 */
+input {
+  border-collapse: collapse;
+  border-style: hidden;
+  border-radius: 10px;
+  background-color: #2E3034;
 }

@@ -26,9 +26,9 @@
         <th scope="col">도착지</th>
         <th scope="col">요청업체</th>
         <th scope="col">운송담당</th>
-        <th scope="col">내부담당</th>
         <th scope="col">물품정보</th>
-        <th scope="col">운반일자</th>
+        <th scope="col">상태</th>
+        <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
@@ -37,9 +37,9 @@
         <td th:text="${delivery.departure}">departure</td>
         <td th:text="${delivery.destination}">destination</td>
         <td th:text="${delivery.requestedCompany}">requestedCompany</td>
-        <td th:text="${delivery.driver_usr.name}">driver_usr</td>
-        <td th:text="${delivery.admin_usr.name}">admin_usr</td>
+        <td th:text="${delivery.driver_usr.usr_id}">driver_usr</td>
         <td th:text="${delivery.requestedDateTime}">requestedDateTime</td>
+        <td th:text="${delivery.state}">requestedDateTime</td>
         <td><a th:href="@{/delivery/{delivery_no}(delivery_no=${delivery.delivery_no})}">상세</a></td>
       </tr>
       </tbody>
