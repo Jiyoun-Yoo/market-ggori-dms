@@ -16,35 +16,82 @@
 
 <div layout:fragment="content">
   <div class="container">
-    <p class="title">배송 상세</p>
+    <p class="title">#<span th:text="${delivery.delivery_no}"></span></p>
 
-    <table>
-      <thead>
-      <tr>
-        <th scope="col">번호</th>
-        <th scope="col">출발지</th>
-        <th scope="col">도착지</th>
-        <th scope="col">요청업체</th>
-        <th scope="col">물품정보</th>
-        <th scope="col">운송담당</th>
-        <th scope="col">내부담당</th>
-        <th scope="col">운반일자</th>
-        <th scope="col">요청일자</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row" th:text="${delivery.delivery_no}">delivery_no</th>
-        <td th:text="${delivery.departure}">departure</td>
-        <td th:text="${delivery.destination}">destination</td>
-        <td th:text="${delivery.requestedCompany}">requestedCompany</td>
-        <td th:text="${delivery.product}">product</td>
-        <td th:text="${delivery.driver_usr.usr_id}">driver_usr</td>
-        <td th:text="${delivery.admin_usr.usr_id}">admin_usr</td>
-        <td th:text="${delivery.createdDtm}">createdDtm</td>
-      </tr>
-      </tbody>
-    </table>
+    <div class="w-50 center" style="font-size: 15px;">
+
+      <div class="mb-3 row">
+        <label for="departure" class='form-label col-sm-2 col-form-label'>출발지</label>
+        <div class="col-sm-10">
+          <input id="departure" th:value="${delivery.departure}" type='text'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="destination" class='form-label col-sm-2 col-form-label'>도착지</label>
+        <div class="col-sm-10">
+          <input id="destination" th:value="${delivery.destination}" type='text'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="requestedCompany" class='form-label col-sm-2 col-form-label'>요청 업체</label>
+        <div class="col-sm-10">
+          <input id="requestedCompany" th:value="${delivery.requestedCompany}" type='text'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="driver_usr_name" class='form-label col-sm-2 col-form-label'>운송 담당자</label>
+        <div class="col-sm-10">
+          <input id="driver_usr_name" th:value="${delivery.driver_usr.usr_id}" type='text'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="product" class='form-label col-sm-2 col-form-label'>물품 정보</label>
+        <div class="col-sm-10">
+          <input id="product" th:value="${delivery.product}" type='text'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="requestedDate" class='form-label col-sm-2 col-form-label'>운반 요청 일자</label>
+        <div class="col-sm-10">
+          <input id="requestedDate" th:value="${delivery.requestedDateTime}" type="text">
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="state" class='form-label col-sm-2 col-form-label'>배송 상태</label>
+        <div class="col-sm-10">
+          <select id="state" th:value="${delivery.state}">
+            <option value="D" selected>예정(D)</option>
+            <option value="P">진행중(P)</option>
+            <option value="Y">완료(Y)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="detail" class='form-label col-sm-2 col-form-label'>배송 상세</label>
+        <div class="col-sm-10">
+          <input id="detail" th:value="${delivery.detail}" type='text' maxlength="100">
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="admin_memo" class='form-label col-sm-2 col-form-label'>관리자 메모</label>
+        <div class="col-sm-10">
+          <input id="admin_memo" th:value="${delivery.admin_memo}" type='text' maxlength="50" placeholder="관리자 메모(50자까지 입력 가능), 관리자만 열람 가능">
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 10px 0px;">
+      <button id="btn_save" type="button" class="btn btn-primary btn-lg" onclick="checkInput();">저장</button>
+      <a href="list" class="btn btn-secondary btn-lg">목록</a>
+    </div>
 
   </div>
 </div>

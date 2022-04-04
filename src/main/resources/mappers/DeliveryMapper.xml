@@ -11,7 +11,7 @@
     <result column="from_where" 		  property="departure" />
     <result column="to_where"         property="destination" />
     <result column="reqstd_com" 	    property="requestedCompany" />
-    <result column="reqsted_dtm" 	    property="requestedDateTime" />
+    <result column="reqstd_dtm" 	    property="requestedDateTime" />
     <result column="compl_dtm" 	  	  property="completedDtm" />
     <result column="product" 	  	    property="product" />
 <!--    <result column="driver_check_yn"  property="usr_id" />-->
@@ -45,8 +45,8 @@
 <!--  </insert>-->
 
   <insert id="insertDelivery" parameterType="map" useGeneratedKeys="true" keyProperty="delivery_no">
-    insert into delivery(from_where, to_where, reqstd_com, product, admin_id, driver_id)
-            values(#{departure}, #{destination}, #{requestedCompany}, #{product}, #{admin_usr.usr_id}, #{driver_usr.usr_id})
+    insert into delivery(from_where, to_where, reqstd_com, product, admin_id, driver_id, reqstd_dtm)
+            values(#{departure}, #{destination}, #{requestedCompany}, #{product}, #{admin_usr.usr_id}, #{driver_usr.usr_id}, #{requestedDateTime})
     <selectKey keyProperty="delivery_no" resultType="Integer" order="AFTER">
       SELECT LAST_INSERT_ID()
     </selectKey>
