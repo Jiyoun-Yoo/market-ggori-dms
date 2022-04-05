@@ -24,30 +24,29 @@
           <div class="mb-3 row">
             <label for="departure" class='form-label col-sm-2 col-form-label'>출발지</label>
             <div class="col-sm-10">
-              <input id="departure" th:field="${delivery.departure}" type='text' class="form-control" placeholder="출발지 정보를 입력하세요.">
+              <input id="departure" th:field="${delivery.departure}" type='text' placeholder="출발지 정보를 입력하세요.">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="destination" class='form-label col-sm-2 col-form-label'>도착지</label>
             <div class="col-sm-10">
-              <input id="destination" th:field="${delivery.destination}" type='text' class="form-control" placeholder="도착지 정보를 입력하세요.">
+              <input id="destination" th:field="${delivery.destination}" type='text' placeholder="도착지 정보를 입력하세요.">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="requestedCompany" class='form-label col-sm-2 col-form-label'>요청 업체</label>
             <div class="col-sm-10">
-              <input id="requestedCompany" th:field="${delivery.requestedCompany}" type='text' class="form-control" placeholder="요청업체 정보를 입력하세요.">
+              <input id="requestedCompany" th:field="${delivery.requestedCompany}" type='text' placeholder="요청업체 정보를 입력하세요.">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="driver_usr_name" class='form-label col-sm-2 col-form-label'>운송 담당자</label>
             <div class="col-sm-10">
-              <div class="input-group mb-3">
-              <input id="driver_usr_name" th:field="${delivery.driver_usr.name}" type='text' class="form-control" placeholder="운송 담당자를 입력하세요.">
-              <button id="btn_checkDriver" type="button" class="btn btn-secondary btn-lg" onclick="checkDriver();">입력 확인</button>
+              <div class="input-group">
+                <input id="driver_usr_name" style="width:420px" th:field="${delivery.driver_usr.name}" type='text' placeholder="운송 담당자를 입력하세요."><button id="btn_checkDriver" style="width: 80px" type="button" class="btn btn-secondary btn-lg" onclick="checkDriver();">입력 확인</button>
               </div>
             </div>
           </div>
@@ -55,24 +54,21 @@
           <div class="mb-3 row">
             <label for="product" class='form-label col-sm-2 col-form-label'>물품 정보</label>
             <div class="col-sm-10">
-              <input id="product" th:field="${delivery.product}" type='text' class="form-control" placeholder="운송 물품 정보를 입력하세요.">
+              <input id="product" th:field="${delivery.product}" type='text' placeholder="운송 물품 정보를 입력하세요.">
             </div>
           </div>
 
           <div class="mb-3 row">
-            <label for="requestedDate" class='form-label col-sm-2 col-form-label'>운반 요청 일자</label>
-            <div class="col-sm-5">
-              <input id="requestedDate" th:field="${delivery.requestedDateTime}" type='date' class="form-control" placeholder="운송 요청일을 입력하세요.">
-            </div>
-            <div class="col-sm-5">
-            <input id="requestedTime" th:field="${delivery.requestedDateTime}" type='time' class="form-control" placeholder="운송 시간을 입력하세요.">
+            <label for="requestedDate" class='form-label col-sm-2 col-form-label'>운반 일시</label>
+            <div class="col-sm-10">
+              <input id="requestedDate" th:field="${delivery.requestedDateTime}" type='datetime-local' placeholder="운송 요청일시를 입력하세요.">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="state" class='form-label col-sm-2 col-form-label'>배송 상태</label>
             <div class="col-sm-10">
-              <select class="form-select" id="state" th:field="${delivery.state}">
+              <select  id="state" th:field="${delivery.state}">
                 <option value="D" selected>예정(D)</option>
                 <option value="P">진행중(P)</option>
                 <option value="Y">완료(Y)</option>
@@ -83,14 +79,14 @@
           <div class="mb-3 row">
             <label for="detail" class='form-label col-sm-2 col-form-label'>배송 상세</label>
             <div class="col-sm-10">
-              <input id="detail" th:field="${delivery.detail}" type='text' maxlength="100" class="form-control" placeholder="배송 상세 내용(100자까지 입력 가능)">
+              <input id="detail" th:field="${delivery.detail}" type='text' maxlength="100" placeholder="배송 상세 내용(100자까지 입력 가능)">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="admin_memo" class='form-label col-sm-2 col-form-label'>관리자 메모</label>
             <div class="col-sm-10">
-              <input id="admin_memo" th:field="${delivery.admin_memo}" type='text' maxlength="50" class="form-control" placeholder="관리자 메모(50자까지 입력 가능), 관리자만 열람 가능">
+              <input id="admin_memo" th:field="${delivery.admin_memo}" type='text' maxlength="50" placeholder="관리자 메모(50자까지 입력 가능), 관리자만 열람 가능">
             </div>
           </div>
         </div>
