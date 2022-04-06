@@ -151,10 +151,10 @@ public class UserController {
 //    response.addCookie(id_cookie);
 
     //mock user
-    User usr_admin = new User("jiyounyoo","jiyoun_admin" ,"1234", "jiyounyoo@test.com","010-1234-1234", "y" , "y" ,"n");
-    User usr_general = new User("jiyounyoo","jiyoun_normal" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"n");
-    User usr_blocked = new User("jiyounyoo","jiyoun_blocked" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
-    User usr_notInUse = new User("jiyounyoo","jiyoun_notInUse" ,"1234", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
+    User usr_admin = new User("jiyounyoo","jiyoun_admin" ,"1234", "2022-01-01 14:00:00", "jiyounyoo@test.com","010-1234-1234", "y" , "y" ,"n");
+    User usr_general = new User("jiyounyoo","jiyoun_normal" ,"1234","2022-01-01 14:00:00" , "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"n");
+    User usr_blocked = new User("jiyounyoo","jiyoun_blocked" , "1234","2022-01-01 14:00:00", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
+    User usr_notInUse = new User("jiyounyoo","jiyoun_notInUse" ,"1234", "2022-01-01 14:00:00", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
 
     User user = usr_admin;
 

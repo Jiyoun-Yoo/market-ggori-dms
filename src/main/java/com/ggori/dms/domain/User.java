@@ -19,10 +19,11 @@ public class User {
   public User() {
   }
 
-  public User(String name, String usr_id, String usr_pwd, String email,  String tel, String admin_yn, String use_yn, String block_yn) {
+  public User(String name, String usr_id, String usr_pwd, String rgs_dtm, String email,  String tel, String admin_yn, String use_yn, String block_yn) {
     this.name = name;
     this.usr_id = usr_id;
     this.usr_pwd = usr_pwd;
+    this.createdDtm = rgs_dtm;
     this.email = email;
     this.tel = tel;
     this.admin_yn = admin_yn;

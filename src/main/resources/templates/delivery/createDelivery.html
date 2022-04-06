@@ -45,9 +45,7 @@
           <div class="mb-3 row">
             <label for="driver_usr_name" class='form-label col-sm-2 col-form-label'>운송 담당자</label>
             <div class="col-sm-10">
-              <div class="input-group">
-                <input id="driver_usr_name" style="width:420px" th:field="${delivery.driver_usr.name}" type='text' placeholder="운송 담당자를 입력하세요."><button id="btn_checkDriver" style="width: 80px" type="button" class="btn btn-secondary btn-lg" onclick="checkDriver();">입력 확인</button>
-              </div>
+              <input id="driver_usr_name" style="width:420px" th:field="${delivery.driver_usr.name}" type='text' placeholder="운송 담당자를 입력하세요."><button id="btn_checkDriver" style="float" type="button" class="btn btn-secondary btn-lg" onclick="checkDriver();">입력 확인</button>
             </div>
           </div>
 
@@ -93,7 +91,7 @@
 
         <div style="padding: 10px 0px;">
           <button id="btn_create" type="button" class="btn btn-primary btn-lg" onclick="checkInput();">등록</button>
-          <a href="list" class="btn btn-secondary btn-lg">취소</a>
+          <a href="list" class="btn btn-secondary btn-lg a_button">취소</a>
         </div>
       </div>
     </form>

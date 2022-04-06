@@ -63,10 +63,12 @@ public class AdminController {
   @GetMapping("userInfo/{usr_no}")
   public ModelAndView userDetail(@PathVariable int usr_no) {
     ModelAndView modelAndView = new ModelAndView("admin/userInfo");
+    User user;
 
     try {
-      User user = userService.getUserByUsrNo(usr_no);
+      user = userService.getUserByUsrNo(usr_no);
       log.info(user.toString());
+      log.info(userService.list().toString());
       modelAndView.addObject("user", user);
 
     } catch(Exception e) {

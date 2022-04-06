@@ -15,34 +15,70 @@
 
 <div layout:fragment="content">
 <div class="container">
-  <p class="title">회원 상세 정보</p>
-    <table>
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th>이름</th>
-        <td th:text="${user.name}">name</td>
-      </tr>
-      <tr>
-        <th>로그인 아이디</th>
-        <td th:text="${user.usr_id}">usr_id</td>
-      </tr>
-      <tr>
-        <th>가입 일자</th>
-        <td th:text="${user.createdDtm}">createdDtm</td>
-      </tr>
-      <tr>
-        <th>계정 상태</th>
-        <td th:if="${user.use_yn == 'Y'}">활성</td>
-        <td th:else>비활성</td>
-      </tr>
-      </tbody>
-    </table>
+  <p class="title">#<span th:text="${user.usr_no}"></span></p>
+
+  <div class="w-50 center" style="font-size: 15px;">
+
+    <div class="mb-3 row">
+      <label for="name" class='form-label col-sm-2 col-form-label'>이름</label>
+      <div class="col-sm-10">
+        <input id="name" th:value="${user.name}" type='text' disabled>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="usr_id" class='form-label col-sm-2 col-form-label'>아이디</label>
+      <div class="col-sm-10">
+        <input id="usr_id" th:value="${user.usr_id}" type='text' disabled>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="createdDtm" class='form-label col-sm-2 col-form-label'>가입 일자</label>
+      <div class="col-sm-10">
+        <input id="createdDtm" th:value="${user.createdDtm}" type='text' disabled>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="use_yn" class='form-label col-sm-2 col-form-label'>계정 상태</label>
+      <div class="col-sm-10">
+        <select id="use_yn" th:value="${user.use_yn}">
+          <option value="Y">사용(Y)</option>
+          <option value="N">미사용(N)</option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="mb-3 row">
+      <label for="recentVisitDtm" class='form-label col-sm-2 col-form-label'>최근 방문일</label>
+      <div class="col-sm-10">
+        <input id="recentVisitDtm" th:value="${user.recentVisitDtm}" type='text' disabled>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="penalty_cnt" class='form-label col-sm-2 col-form-label'>패널티 횟수</label>
+      <div class="col-sm-10">
+        <input id="penalty_cnt" th:value="${user.penalty_cnt}" type='text' disabled>
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="admin_memo" class='form-label col-sm-2 col-form-label'>관리자 메모</label>
+      <div class="col-sm-10">
+        <input id="admin_memo" th:value="${user.admin_memo}" type='text' disabled>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+
 
     </div>
 </div>

@@ -94,4 +94,21 @@ input, select {
   padding: 3px 15px;
 }
 
+button {
+  border-collapse: collapse;
+  border-style: hidden;
+  width:80px;
+  height:35px;
+  padding: 3px 15px;
+}
+.a_button {
+  border-collapse: collapse;
+  border-style: hidden;
+  width:80px;
+  line-height: 25px;
+  /*height:40px;*/
+  /*display: block;*/
+  /*padding: 3px 15px;*/
+  text-align: center;
+}
 

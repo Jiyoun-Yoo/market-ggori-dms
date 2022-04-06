@@ -26,7 +26,6 @@
         <th scope="col">등록일</th>
         <th scope="col">관리자 여부</th>
         <th scope="col">사용 여부</th>
-        <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
@@ -41,8 +40,6 @@
         <td th:text="${user.createdDtm}">createdDtm</td>
         <td th:text="${user.admin_yn}">admin_yn</td>
         <td th:text="${user.use_yn}">use_yn</td>
-<!--        <td><a th:href="/admin/userInfo/${user.usr_no}">상세</a></td>-->
-        <td><a th:href="@{/admin/userInfo/{usr_no}(usr_no=${user.usr_no})}">상세</a></td>
       </tr>
       </tbody>
     </table>
