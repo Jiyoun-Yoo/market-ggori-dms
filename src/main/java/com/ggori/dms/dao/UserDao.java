@@ -9,6 +9,7 @@ public interface UserDao {
 //  List<User> findAll() throws Exception;
   User checkId(String usr_id) throws Exception;
   User findUserByUsrNo(int usr_no) throws Exception;
+  List<User> findUserByNo(int usr_no) throws Exception;
   List<User> findAll(String keyword) throws Exception;
   List<User> findAllAdmin(Map<String, Object> map) throws Exception;
   int insertUser(User user) throws Exception;

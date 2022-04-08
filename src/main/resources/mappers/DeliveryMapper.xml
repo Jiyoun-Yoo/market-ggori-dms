@@ -6,7 +6,7 @@
 <mapper namespace="com.ggori.dms.dao.DeliveryDao">
 
   <resultMap type="delivery"                   id="DeliveryMap">
-    <id column="delivery_no"		        property="delivery_no" />
+    <id column="delivery_no"		      property="delivery_no" />
     <result column="rgs_dtm" 		      property="createdDtm" />
     <result column="from_where" 		  property="departure" />
     <result column="to_where"         property="destination" />
@@ -28,10 +28,6 @@
     <association property="driver_usr"          javaType="user">
       <id column="driver_id"		           property="usr_id" />
       <result column="driver_name" 		     property="name" />
-      <result column="driver_tel"          property="tel" />
-      <result column="driver_use_yn"  	   property="use_yn" />
-      <result column="driver_block_yn"     property="block_yn" />
-      <result column="driver_penalty_cnt"  property="penalty_cnt" />
     </association>
   </resultMap>
 

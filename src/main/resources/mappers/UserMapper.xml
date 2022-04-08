@@ -62,7 +62,7 @@
     where usr_id = #{usr_id}
   </select>
 
-  <select id="findUserByUsrNo" resultType="user"  parameterType="int">
+  <select id="findUserByUsrNo" resultMap="UserMap"  parameterType="int">
     select *
     from user
     where usr_no = #{usr_no}

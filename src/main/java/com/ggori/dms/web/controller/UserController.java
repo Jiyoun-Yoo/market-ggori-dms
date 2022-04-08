@@ -5,7 +5,6 @@ import com.ggori.dms.service.UserService;
 import com.ggori.dms.util.DateUtil;
 import groovy.util.logging.Slf4j;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -152,9 +150,9 @@ public class UserController {
 
     //mock user
     User usr_admin = new User("jiyounyoo","jiyoun_admin" ,"1234", "2022-01-01 14:00:00", "jiyounyoo@test.com","010-1234-1234", "y" , "y" ,"n");
-    User usr_general = new User("jiyounyoo","jiyoun_normal" ,"1234","2022-01-01 14:00:00" , "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"n");
-    User usr_blocked = new User("jiyounyoo","jiyoun_blocked" , "1234","2022-01-01 14:00:00", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
-    User usr_notInUse = new User("jiyounyoo","jiyoun_notInUse" ,"1234", "2022-01-01 14:00:00", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
+//    User usr_general = new User("jiyounyoo","jiyoun_normal" ,"1234","2022-01-01 14:00:00" , "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"n");
+//    User usr_blocked = new User("jiyounyoo","jiyoun_blocked" , "1234","2022-01-01 14:00:00", "jiyounyoo@test.com","010-1234-1234", "n" , "y" ,"y");
+//    User usr_notInUse = new User("jiyounyoo","jiyoun_notInUse" ,"1234", "2022-01-01 14:00:00", "jiyounyoo@test.com","010-1234-1234", "n" , "n" ,"n");
 
     User user = usr_admin;
 
