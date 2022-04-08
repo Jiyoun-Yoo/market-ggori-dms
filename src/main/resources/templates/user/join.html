@@ -17,76 +17,70 @@
   <div id="user_join">
     <form id="joinForm" th:action="@{join}" method='post'>
       <div class="container">
-        <p class="title">마켓 꼬리 배송관리 시스템 회원가입</p>
+        <p class="title">회원가입</p>
 
         <div class="w-50 center" style="font-size: 12px;">
 
           <div class="mb-3 row">
             <label for="name" class='form-label col-sm-2 col-form-label'>이름</label>
-            <div class="col-sm-7">
-              <input id="name" th:field="${user.name}" type='text' class="form-control" placeholder="Name">
+            <div class="col-sm-10">
+              <input id="name" th:field="${user.name}" type='text'  placeholder="Name">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="svc_id" class='form-label col-sm-2 col-form-label'>기업 아이디</label>
-            <div class="col-sm-7">
-              <input id="svc_id" th:field="${user.svc_id}" type='text' class="form-control" placeholder="기업 ID" >
+            <div class="col-sm-10">
+              <input id="svc_id" th:field="${user.svc_id}" type='text'  placeholder="기업 ID" >
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="usr_id" class='form-label col-sm-2 col-form-label'>로그인 아이디</label>
-            <div class="col-sm-7">
-              <div class="input-group mb-3">
-                <input id="usr_id" th:field="${user.usr_id}" type='text' class="form-control" placeholder="로그인 ID">
-                <button id="btn_checkID" type="button" class="btn btn-secondary btn-lg" onclick="checkID();">아이디 확인</button>
-              </div>
+            <div class="col-sm-10">
+              <input id="usr_id" th:field="${user.usr_id}" type='text' style="width:420px" placeholder="로그인 ID"><button id="btn_checkID" type="button" style="float;" class="btn btn-secondary btn-lg" onclick="checkID();">아이디 확인</button>
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="usr_pwd" class='form-label col-sm-2 col-form-label'>비밀번호</label>
-            <div class="col-sm-7">
-              <input id="usr_pwd" th:field="${user.usr_pwd}" type='password' class="form-control"
+            <div class="col-sm-10">
+              <input id="usr_pwd" th:field="${user.usr_pwd}" type='password'
                      placeholder="숫자, 문자, 특수문자(!@#$%^&*()?_~)로 이루어진 8 ~ 20자리의 문자열">
 
             </div>
           </div>
 
           <div class="mb-3 row">
-            <label for="confirm_pwd" class='form-label col-sm-2 col-form-label'>비밀번호 확인</label>
-            <div class="col-sm-7">
-              <div class="input-group mb-3">
-                <input id="confirm_pwd" type='password' class="form-control"
-                       placeholder="위와 동일한 비밀번호 입력">
-                <button id="btn_checkPW" type="button" class="btn btn-secondary btn-lg" onclick="checkPW();">비밀번호 확인</button>
-              </div>
+            <label for="confirm_pwd" class='form-label col-sm-2 col-form-label'>운송 담당자</label>
+            <div class="col-sm-10">
+              <input id="confirm_pwd" type='password' style="width:420px"
+                     placeholder="위와 동일한 비밀번호 입력"><button id="btn_checkPW" type="button" class="btn btn-secondary btn-lg" onclick="checkPW();">입력 확인</button>
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="email" class='form-label col-sm-2 col-form-label'>이메일</label>
-            <div class="col-sm-7">
-              <input id="email" th:field="${user.email}" type='email' class="form-control" placeholder="Email Address (eg. ggori@test.com)">
+            <div class="col-sm-10">
+              <input id="email" th:field="${user.email}" type='email'  placeholder="Email Address (eg. ggori@test.com)">
             </div>
           </div>
 
           <div class="mb-3 row">
             <label for="tel" class='form-label col-sm-2 col-form-label'>전화번호</label>
-            <div class="col-sm-7">
-              <input id="tel" th:field="${user.tel}" type='tel' class="form-control" placeholder="Telephone No">
+            <div class="col-sm-10">
+              <input id="tel" th:field="${user.tel}" type='tel'  placeholder="Telephone No">
             </div>
           </div>
         </div>
 
-        <input style="display: none;" type='text' class="form-control" name='admin_yn' value="n">
-        <input style="display: none;" type='text' class="form-control" name='use_yn' value="y">
-        <input style="display: none;" type='text' class="form-control" name='block_yn' value="n">
+        <input style="display: none;" type='text'  name='admin_yn' value="n">
+        <input style="display: none;" type='text'  name='use_yn' value="y">
+        <input style="display: none;" type='text'  name='block_yn' value="n">
 
-        <div style="margin-top:10px; margin-bottom: 10px;">
+        <div style="margin-top:20px; margin-bottom: 20px;">
           <button id="btn_join" type="button" class="btn btn-primary btn-lg" onclick="checkInput();">회원 가입</button>
-          <a href="/user/main" class="btn btn-secondary btn-lg">취소</a>
+          <a href="/user/main" class="btn btn-secondary btn-lg a_button">취소</a>
         </div>
       </div>
     </form>

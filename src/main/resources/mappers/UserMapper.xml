@@ -95,5 +95,11 @@
     where usr_no=#{usr_no}
   </update>
 
+  <update id="update_last_vst_dtm" parameterType="map">
+    update user set
+      last_vst_dtm = #{last_vst_dtm}
+    where usr_no=#{usr_no}
+  </update>
+
 
 </mapper>
