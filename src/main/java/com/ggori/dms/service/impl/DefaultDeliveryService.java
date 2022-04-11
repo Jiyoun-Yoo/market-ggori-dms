@@ -20,6 +20,16 @@ public class DefaultDeliveryService implements DeliveryService {
   }
 
   @Override
+  public int updateDelivery(Delivery delivery) throws Exception {
+    return 0;
+  }
+
+  @Override
+  public int deleteDelivery(int no) throws Exception {
+    return 0;
+  }
+
+  @Override
   public List<Delivery> list() throws Exception {
     return deliveryDao.findAllDelivery();
   }
@@ -30,7 +40,7 @@ public class DefaultDeliveryService implements DeliveryService {
   }
 
   @Override
-  public Delivery getDelivery() throws Exception {
+  public Delivery getDelivery(String keyword) throws Exception {
     return null;
   }
 

@@ -1,5 +1,5 @@
 package com.ggori.dms.service;
 
-public class CommonService {
+public interface CommonService {
 
 }
