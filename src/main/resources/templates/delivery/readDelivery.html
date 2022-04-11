@@ -17,6 +17,10 @@
   <div class="container">
     <p class="title">#<span th:text="${delivery.delivery_no}"></span></p>
 
+    <div style="text-align:right; margin-right:360px; margin-bottom: 5px">
+      <a id="btn_newDelivery" th:href="@{/penalty/new/{delivery_no}(delivery_no=${delivery.delivery_no})}" class="btn btn-dark btn-lg">패널티 등록</a>
+    </div>
+
     <form id="updateForm" th:action="@{/delivery/update}" method='post'>
       <div class="w-50 center" style="font-size: 15px;">
 

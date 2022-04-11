@@ -104,7 +104,6 @@ public class DeliveryController {
 
     try {
       deliveryList = deliveryService.list();
-      log.info("########      " + deliveryList.toString());
       modelAndView.addObject("deliveryList", deliveryList);
 
     } catch (Exception e) {
