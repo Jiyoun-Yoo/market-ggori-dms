@@ -10,22 +10,19 @@
     <result column="writer_no" 	      property="penalty_usr_no" />
     <result column="rgs_dtm" 		      property="createdDtm" />
     <result column="rgs_dtm" 		      property="updatedDate" />
-    <result column="usr_check_yn" 	property="usr_check_yn" />
+    <result column="usr_check_yn" 	  property="usr_check_yn" />
     <result column="admin_memo" 	  	property="admin_memo" />
     <result column="state"  	        property="state" />
 
     <association property="admin_usr"           javaType="user">
-      <id column="admin_usr_no"		         property="usr_no" />
-      <result column="admin_usr_id"      	 property="usr_id" />
+      <id column="admin_id"		             property="usr_id" />
       <result column="admin_name" 		     property="name" />
       <result column="admin_yn"       	   property="admin_yn" />
     </association>
 
     <association property="penalty_usr"         javaType="user">
-      <id column="penalty_usr_no"		       property="usr_no" />
-      <result column="penalty_usr_id"     property="usr_id" />
+      <id column="penalty_usr_id"          property="usr_id" />
       <result column="penalty_name" 		   property="name" />
-      <result column="penalty_yn"       	 property="admin_yn" />
     </association>
 
   </resultMap>

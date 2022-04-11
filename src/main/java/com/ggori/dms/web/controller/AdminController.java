@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Slf4j
-
 @RequestMapping("admin")
 public class AdminController {
   private static final Logger log = LoggerFactory.getLogger(AdminController.class);
@@ -45,8 +44,8 @@ public class AdminController {
     return "admin/readQnA";
   }
 
-  @GetMapping("userList")
-  public ModelAndView userList(Model model) {
+  @GetMapping("users")
+  public ModelAndView users(Model model) {
     ModelAndView modelAndView = new ModelAndView("admin/userList");
     List<User> userList;
 

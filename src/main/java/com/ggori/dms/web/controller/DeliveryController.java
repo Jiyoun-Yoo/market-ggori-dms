@@ -28,7 +28,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @Slf4j
-@RequestMapping("delivery")
 public class DeliveryController {
   private static final Logger log = LoggerFactory.getLogger(DeliveryController.class);
 
@@ -37,7 +36,7 @@ public class DeliveryController {
 
   DateUtil dateUtil = new DateUtil();
 
-  @GetMapping("new")
+  @GetMapping("delivery/new")
   public ModelAndView createDevlivery() {
     ModelAndView modelAndView = new ModelAndView("delivery/createDelivery");
     modelAndView.addObject("delivery", new Delivery());
@@ -45,7 +44,7 @@ public class DeliveryController {
     return modelAndView;
   }
 
-  @PostMapping("new")
+  @PostMapping("delivery/new")
   public RedirectView createDevlivery(Model model, HttpSession session, @ModelAttribute("delivery") Delivery delivery) {
     delivery.setAdmin_usr((User) session.getAttribute("login_user"));
     delivery.setRequestedDateTime(delivery.getRequestedDateTime().replace(",", " "));
@@ -66,7 +65,7 @@ public class DeliveryController {
     return new RedirectView("/delivery/" + delivery.getDelivery_no());
   }
 
-  @PostMapping("checkDriver")
+  @PostMapping("delivery/checkDriver")
   @ResponseBody
   public Map<Object, Object> checkDriver(@RequestParam Map<String, Object> paramMap) {
     String name = (String) paramMap.get("driver_name");
@@ -98,7 +97,7 @@ public class DeliveryController {
   }
 
 
-  @GetMapping("list")
+  @GetMapping("deliveries")
   public ModelAndView deliveryList() {
     ModelAndView modelAndView = new ModelAndView("delivery/deliveryList");
     List<Delivery> deliveryList;
@@ -114,7 +113,7 @@ public class DeliveryController {
     return modelAndView;
   }
 
-  @GetMapping("{delivery_no}")
+  @GetMapping("delivery/{delivery_no}")
   public ModelAndView readDelivery(@PathVariable int delivery_no) {
     ModelAndView modelAndView = new ModelAndView("delivery/readDelivery");
     try {
