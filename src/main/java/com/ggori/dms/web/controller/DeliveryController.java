@@ -96,6 +96,12 @@ public class DeliveryController {
     return map;
   }
 
+  @GetMapping("delivery/bulk")
+  public ModelAndView createDeliveryBulk() {
+    ModelAndView modelAndView = new ModelAndView("delivery/createDeliveryBulk");
+
+    return modelAndView;
+  }
 
   @GetMapping("deliveries")
   public ModelAndView deliveryList() {
