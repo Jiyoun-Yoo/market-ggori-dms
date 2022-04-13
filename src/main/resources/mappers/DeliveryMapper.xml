@@ -18,6 +18,7 @@
     <result column="detail"        	  property="detail" />
     <result column="state"  	        property="state" />
     <result column="admin_memo" 	 	  property="admin_memo" />
+    <result column="voc_yn" 	 	      property="voc_yn" />
 
     <association property="admin_usr"           javaType="user">
       <id column="admin_id"		             property="usr_id" />

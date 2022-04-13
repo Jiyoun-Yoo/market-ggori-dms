@@ -8,27 +8,28 @@
   <resultMap type="voc"                    id="VOCMap">
     <id column="voc_no"		            property="voc_no" />
     <result column="delivery_no" 	 	  property="delivery_no" />
-    <result column="admin_usr_no" 	 	property="admin_usr_no" />
-    <result column="reqsted_date" 	  property="requestedDate" />
-    <result column="compl_date" 	  	property="completedDate" />
     <result column="detail"        	  property="detail" />
     <result column="rgs_dtm" 		      property="createdDate" />
-    <result column="state"  	        property="state" />
+    <result column="updtd_dtm" 		    property="updatedDate" />
     <result column="penalty_yn" 	 	  property="penalty_yn" />
     <result column="penalty_usr_no" 	property="penalty_usr_no" />
     <result column="admin_memo" 	  	property="admin_memo" />
 
-    <association property="delivery"       javaType="delivery">
-      <id column="delvry_no"		        property="delivery_no" />
-      <result column="usr_id"      	  	property="usr_id" />
-      <result column="tel"              property="tel" />
-      <result column="delvry_state" 	  property="state" />
+    <association property="writer"           javaType="user">
+      <id column="writer_id"		           property="usr_id" />
+      <result column="writer_name" 		     property="name" />
+    </association>
+
+    <association property="admin_usr"           javaType="user">
+      <id column="admin_id"		             property="usr_id" />
+      <result column="admin_name" 		     property="name" />
+      <result column="admin_yn"       	   property="admin_yn" />
     </association>
   </resultMap>
 
-  <insert id="insertVOC" parameterType="string">
-    insert into user(svc_id, usr_id, name, email, hashpwd, tel, rgs_dtm, last_vst_dtm)
-    values(#{svc_id}, #{usr_id}, #{name}, #{email}, password(#{usr_pwd}), #{tel}, now(), now())
+  <insert id="insertVOC" parameterType="map">
+    insert into user(delivery_no, writer_id, admin_id, detail, admin_memo)
+    values(#{delivery_no}, #{writer_id}, #{admin_id}, #{detail}, #{admin_memo})
   </insert>
 
 

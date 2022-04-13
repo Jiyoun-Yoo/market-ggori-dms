@@ -16,6 +16,7 @@ public class Delivery {
   private String state; //진행 상태(D: 예정, P: 진행중, Y: 완료, Z:취소)
   private String detail;
   private String admin_memo;
+  private String voc_yn;
 
   public Delivery() {
   }

@@ -1,6 +1,7 @@
 package com.ggori.dms.web.controller;
 
 import com.ggori.dms.domain.Delivery;
+import com.ggori.dms.domain.Penalty;
 import com.ggori.dms.service.DeliveryService;
 import groovy.util.logging.Slf4j;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +29,10 @@ public class PenaltyController {
   @GetMapping("new/{delivery_no}")
   public ModelAndView createPenalty(@PathVariable int delivery_no) {
     ModelAndView modelAndView = new ModelAndView("penalty/createPenalty");
+    modelAndView.addObject("penalty", new Penalty());
 
-    log.info("########## delivery_no          " + delivery_no);
     try {
       Delivery delivery = deliveryService.getDeliveryByNo(delivery_no);
-      log.info("########## delivery          " + delivery.toString());
       modelAndView.addObject("delivery", delivery);
 
     } catch(Exception e) {
@@ -42,7 +43,9 @@ public class PenaltyController {
   }
 
   @PostMapping("new")
-  public RedirectView createPenalty(String departure, Model model) {
+  public RedirectView createPenalty(@ModelAttribute("voc") Delivery voc) {
+
+
     return new RedirectView("/");
   }
 

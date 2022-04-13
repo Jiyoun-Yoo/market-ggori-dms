@@ -12,9 +12,7 @@ public class VOC {
   private String updatedDtm;
   private String state; //처리 상태(P: 진행중, Y: 완료. Z: 취소)
   private String penalty_yn; //패널티 여부
-  private User penalty_usr; //패널티 수여자
   private String admin_memo;
-  private String fault_usr_memo;
 
   public int getVoc_no() {
     return voc_no;
@@ -97,14 +95,6 @@ public class VOC {
     return this;
   }
 
-  public User getPenalty_usr() {
-    return penalty_usr;
-  }
-
-  public void setPenalty_usr(User penalty_usr) {
-    this.penalty_usr = penalty_usr;
-  }
-
   public String getAdmin_memo() {
     return admin_memo;
   }
@@ -114,12 +104,4 @@ public class VOC {
     return this;
   }
 
-  public String getFault_usr_memo() {
-    return fault_usr_memo;
-  }
-
-  public VOC setFault_usr_memo(String fault_usr_memo) {
-    this.fault_usr_memo = fault_usr_memo;
-    return this;
-  }
 }

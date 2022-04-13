@@ -15,31 +15,34 @@
 </th:block>
 
 <div layout:fragment="content">
-  <div>
-
+  <div id="user">
     <form id="createForm" th:action="@{new}" method='post'>
       <div class="container">
-        <p class="title">
-          마켓 꼬리 배송관리 시스템 VOC 등록</p>
-      <p>[책임]</p>
-      <label><input type="radio" id="fault_typeA" name="type" value="fault_typeA">운송사</label>
-      <label><input type="radio" id="fault_typeB" name="type" value="fault_typeB">고객사</label>
+        <p class="title">VOC 등록</p>
 
-      <div id="penalty">
-        <p>[운송사 귀책 패널티]</p>
-        <textarea name="penalty" class="radio-value-detail" cols="30" rows="5" placeholder="패널티를 적어주세요."></textarea><br>
+        <div class="w-50 center" style="font-size: 12px;">
+
+          <div class="mb-3 row">
+            <label for="delivery_no" class='form-label col-sm-2 col-form-label'>배송 번호</label>
+            <div class="col-sm-10">
+              <input id="delivery_no" th:field="${delivery.delivery_no}" type='text' placeholder="배송 번호" disabled>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="detail" class='form-label col-sm-2 col-form-label'>상세</label>
+            <div class="col-sm-10">
+              <input id="detail" type='text' th:field="${voc.detail}" name='usr_id' placeholder="VOC 내용 입력">
+            </div>
+          </div>
+
+          <div style="padding: 10px 0px;">
+            <button type="sbmit" class="btn btn-primary btn-lg">등록</button>
+            <a th:href="@{/delivery/{delivery_no}(delivery_no=${delivery.delivery_no})}" class="btn btn-secondary btn-lg a_button">취소</a>
+          </div>
+        </div>
       </div>
-
-      <p>[귀책 사유]</p>
-      <textarea name="reason" cols="30" rows="5" placeholder="귀책 사유를 적어주세요."></textarea><br>
-
-      <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
     </form>
   </div>
-
 </div>
-</html>
-
-
-</body>
 </html>

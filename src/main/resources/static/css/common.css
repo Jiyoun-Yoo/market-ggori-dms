@@ -34,12 +34,12 @@ footer {
 .title {
   font-size: 20px;
   font-weight: bold;
-  padding:15px;
-  margin-bottom: 15px;
+  padding:10px;
+  margin-bottom: 10px;
 }
 
 .container {
-  padding: 50px 0px;
+  padding: 30px 0px;
   font-size: 15px;
   text-align: center;
 }
@@ -84,7 +84,7 @@ th, td {
 
 /* 인풋 관련 스타일 */
 input, select {
-  border-collapse: collapse;
+  /*border-collapse: collapse;*/
   border-style: hidden;
   border-radius: 10px;
   background-color: #2E3034;
@@ -102,13 +102,15 @@ button {
   padding: 3px 15px;
 }
 .a_button {
+  display: inline-block;
   border-collapse: collapse;
   border-style: hidden;
   width:80px;
   line-height: 25px;
-  /*height:40px;*/
+  /*height:35px;*/
   /*display: block;*/
   /*padding: 3px 15px;*/
   text-align: center;
+  /*vertical-align: middle;*/
 }
 

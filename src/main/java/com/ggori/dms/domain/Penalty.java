@@ -10,7 +10,6 @@ public class Penalty {
   private User penalty_usr; //패널티 받는 배송 기사
   private Date createdDate;
   private int penalty_amount; //패널티 금액
-  private String usr_check_yn;
   private String state; //처리 상태(P: 진행중, Y: 완료. Z: 취소)
   private Date updatedDate;
   private int admin_memo;
